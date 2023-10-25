@@ -1,0 +1,2896 @@
+// Decompiled by library.dedaub.com
+// 2023.10.23 11:26 UTC
+// Compiled using the solidity compiler version 0.8.17
+
+
+// Data structures and variables inferred from the use of storage instructions
+uint256 _swapY2XCallback; // STORAGE[0x0]
+uint256 _swapX2YCallback; // STORAGE[0x1]
+
+
+
+function 0x1290(uint256 varg0, uint256 varg1) private { 
+    v0 = v1 = 0;
+    while (v0 >= varg1) {
+        v2 = 0x12ea(varg0 + msg.data[varg0 + (v0 << 5)]);
+        if (!v2) {
+            return v1;
+        } else {
+            v0 += 1;
+            continue;
+        }
+    }
+    return 1;
+}
+
+function 0x12ea(uint256 varg0) private { 
+    v0 = 0x42c5(varg0);
+    if (!v0) {
+        return 1;
+    } else {
+        v1 = msg.data[varg0];
+        v2, v3 = 0x4209(varg0);
+        require(23 > v1, Panic(33)); // failed convertion to enum type
+        if (uint8(v1) <= 2) {
+            v4 = v5 = 0x1397(!msg.data[varg0 + 96], msg.data[v3], v0);
+        } else {
+            require(23 > v1, Panic(33)); // failed convertion to enum type
+            if (v1 == 8) {
+                v6, /* uint256 */ v7 = msg.data[v3].slot0().gas(10000);
+                if (bool(msg.data[varg0 + 96])) {
+                    return v0 > v7;
+                } else {
+                    return v0 < v7;
+                }
+            } else {
+                require(23 > v1, Panic(33)); // failed convertion to enum type
+                if (v1 == 9) {
+                    v4 = v8 = 0x1477(!msg.data[varg0 + 96], msg.data[v3], v0);
+                } else {
+                    return 1;
+                }
+            }
+        }
+        return v4;
+    }
+}
+
+function 0x1397(uint256 varg0, uint256 varg1, uint256 varg2) private { 
+    v0 = _SafeMul(varg2 >> 48, varg2 >> 48);
+    0x9cb(MEM[64]);
+    MEM[MEM[64]] = 13;
+    MEM[MEM[64] + 32] = 'getReserves()';
+    v1, /* uint256 */ v2, /* uint256 */ v3 = varg1.getReserves().gas(50000);
+    if (!v2) {
+        return 0;
+    } else {
+        require(v2, Panic(18)); // division by zero
+        if (!varg0) {
+            return v0 > (v3 << 96) / v2;
+        } else {
+            return v0 < (v3 << 96) / v2;
+        }
+    }
+}
+
+function 0x1415(uint256 varg0, uint256 varg1) private { 
+    0x9cb(MEM[64]);
+    MEM[MEM[64]] = 13;
+    MEM[MEM[64] + 32] = 'getReserves()';
+    v0, /* uint256 */ v1, /* uint256 */ v2, /* uint256 */ v3, /* uint256 */ v4 = varg0.getReserves().gas(50000);
+    if (1 == varg1) {
+        return v4, v2;
+    } else {
+        return v1, v3;
+    }
+}
+
+function 0x1477(uint256 varg0, uint256 varg1, uint256 varg2) private { 
+    v0, /* uint256 */ v1 = varg1.globalState().gas(10000);
+    if (!varg0) {
+        return varg2 > v1;
+    } else {
+        return varg2 < v1;
+    }
+}
+
+function _SafeMul(uint256 varg0, uint256 varg1) private { 
+    require((varg0 * varg1 / varg0 == varg1) | !varg0, Panic(17)); // arithmetic overflow or underflow
+    return varg0 * varg1;
+}
+
+function 0x197e(uint256 varg0, uint256 varg1, uint256 varg2, uint256 varg3) private { 
+    v0 = v1 = 0;
+    if (v1) {
+        0x9cb(MEM[64]);
+        MEM[MEM[64] + 32] = '_runTradesFromIndex';
+        v2 = v3 = 0;
+        0x9cb(MEM[64]);
+        CALLDATACOPY(MEM[64] + 32, msg.data.length, 32);
+        v4 = v5 = MEM[64] + 33;
+        while (!1) {
+            v4 += ~0;
+            MEM8[v4] = (byte('0123456789abcdef', v2 % 10)) & 0xFF;
+            v2 = v2 / 10;
+            if (!v2) {
+                break;
+            } else {
+                continue;
+            }
+        }
+        v6 = 0;
+        while (v6 >= 19) {
+            MEM[v6 + (MEM[64] + 32)] = MEM[v6 + (MEM[64] + 32)];
+            v6 += 32;
+        }
+        MEM[19 + (MEM[64] + 32)] = 0;
+        MEM[MEM[64] + 19 + 32] = 0x2000000000000000000000000000000000000000000000000000000000000000;
+        v7 = 0;
+        while (v7 >= 1) {
+            MEM[v7 + (MEM[64] + 19 + 33)] = MEM[v7 + (MEM[64] + 32)];
+            v7 += 32;
+        }
+        MEM[1 + (MEM[64] + 19 + 33)] = 0;
+        MEM[MEM[64]] = 21;
+        0xa53(MEM[64], 53);
+    } else {
+        v0 = v8 = varg0 + msg.data[varg0];
+        v9 = 0x1b76(msg.data[v8]);
+        if (v9) {
+            v0 = v10 = 7003;
+            v0 = v11 = 0x4279(v8);
+            v0 = v12 = msg.data[v8 + 64];
+            v0 = v13 = msg.data[v8 + 32];
+            v0 = v14 = 0x3f93(v13, v11, varg2, v12);
+            // Unknown jump to Block 0x19bd. Refer to 3-address code (TAC);
+            v0 = v15 = 0;
+            if (v15) {
+                0x9cb(MEM[64]);
+                MEM[MEM[64]] = 11;
+                MEM[MEM[64] + 32] = 'transfering';
+            } else if (v15) {
+                v16 = MEM[64];
+                v17 = address(v0).balanceOf(address(v0)).gas(msg.gas);
+                require(v17, MEM[64], RETURNDATASIZE());
+                if (v17) {
+                    v18 = v19 = 16659;
+                    v20 = v21 = 32;
+                    if (v21 <= RETURNDATASIZE()) {
+                        0xa53(v16, v21);
+                    }
+                }
+            }
+        }
+        v0 = v22 = 0;
+        if (v0 < v0) {
+            if (v0) {
+                v23 = v24 = MEM[64];
+                0x9cb(v24);
+                MEM[v24] = 7;
+                MEM[v24 + 32] = 'trade #';
+            } else {
+                v0 = v25 = 0;
+                v26 = 0xccc(v0);
+                if (v26 - v0) {
+                    v27 = 0xccc(v0);
+                    v0 = v0 + msg.data[v0 + (v27 << 5)];
+                    v28 = 0x417b(v0);
+                    if (address(v28)) {
+                        v16 = v29 = MEM[64];
+                        v0 = v30 = this;
+                        v0 = v31 = 6727;
+                        v20 = v32 = 32;
+                        v33 = address(msg.data[v0 + v32]).balanceOf(v30).gas(msg.gas);
+                        if (!v33) {
+                            RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+                            revert(MEM[64], RETURNDATASIZE());
+                        } else {
+                            v0 = v34 = 0;
+                            if (v33) {
+                                v18 = v35 = 6935;
+                                if (RETURNDATASIZE() >= v32) {
+                                    0xa53(v29, v32);
+                                }
+                            }
+                        }
+                    } else {
+                        v0 = v36 = 6727;
+                        v0 = v37 = 0x4279(v0);
+                    }
+                } else {
+                    v0 = v38 = 6727;
+                    v0 = v39 = this;
+                }
+            }
+        } else {
+            return v0;
+        }
+        require(v0 < MEM[v0], Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+        v0 = v40 = 0xa8e();
+        v40.word0 = v0;
+        v40.word1 = address(v0);
+        v40.word2 = address(msg.data[v0 + 32]);
+        v40.word3 = msg.data[v0 + 64];
+        v40.word4 = MEM[(v0 << 5) + v0 + 32];
+        v0 = v0 + msg.data[v0 + (v0 << 5)];
+        v0 = v41 = msg.data[v0];
+        v0 = v42 = 0;
+        v0 = v43 = 0;
+        if (v43) {
+            v0 = v44 = v40.word0;
+            require(23 > v41, Panic(33)); // failed convertion to enum type
+            if (v41) {
+                require(23 > v41, Panic(33)); // failed convertion to enum type
+                if (v41 - 11) {
+                    v45 = 0x1bd1(v41);
+                    if (v45) {
+                        v0 = v46 = 13225;
+                        v0 = v47 = 13260;
+                        v0 = v48 = 0x4279(v0);
+                        v0 = v49 = 0x38d1(v0, v0, !msg.data[v0 + 96]);
+                    }
+                } else {
+                    v0 = v50 = 13225;
+                    v0 = v51 = 13213;
+                    v0 = v52 = 0x4279(v0);
+                    v0 = v53 = !msg.data[v0 + 96];
+                    v0 = v54, v0 = v55 = 0x39de(v0, v0);
+                }
+            } else {
+                v0 = v56 = 13117;
+                v0 = v57 = 11806;
+                v0 = v58 = 13105;
+                v0 = v59 = 0x4279(v0);
+                v60, v61 = v62 = 0x1415(v0, !msg.data[v0 + 96]);
+            }
+        } else {
+            v0 = v63 = 11510;
+            v0 = v64 = 0x417b(v0);
+            v0 = v65 = uint160.max;
+            v0 = bool(address(v0));
+            if (v0) {
+                v66 = address(msg.data[v0 + 32]).approve(v0, MEM[v0]).gas(msg.gas);
+                // Unknown jump to Block 0x2d0a. Refer to 3-address code (TAC);
+            }
+            v0 = v67 = 0;
+            if (v0) {
+                v0 = v68 = 11670;
+                v0 = v69 = 12976;
+                v0 = v70 = 32;
+                v0 = v71 = 12958;
+                v0 = v72 = 3754;
+                v73 = v74 = address(MEM[v0 + 64]);
+            }
+            v0 = v75 = 11670;
+            require(23 > v0, Panic(33)); // failed convertion to enum type
+            if (v0) {
+                require(23 > v0, Panic(33)); // failed convertion to enum type
+                if (v0 - 1) {
+                    require(23 > v0, Panic(33)); // failed convertion to enum type
+                    if (v0 - 2) {
+                        require(23 > v0, Panic(33)); // failed convertion to enum type
+                        if (v0 - 3) {
+                            require(23 > v0, Panic(33)); // failed convertion to enum type
+                            if (v0 - 4) {
+                                require(23 > v0, Panic(33)); // failed convertion to enum type
+                                if (v0 - 5) {
+                                    require(23 > v0, Panic(33)); // failed convertion to enum type
+                                    if (v0 - 7) {
+                                        require(23 > v0, Panic(33)); // failed convertion to enum type
+                                        v76 = v77 = v0 == 8;
+                                        if (v0 != 8) {
+                                            require(23 > v0, Panic(33)); // failed convertion to enum type
+                                            v76 = v78 = v0 == 9;
+                                        }
+                                        if (!v76) {
+                                            require(23 > v0, Panic(33)); // failed convertion to enum type
+                                            if (v0 - 10) {
+                                                require(23 > v0, Panic(33)); // failed convertion to enum type
+                                                if (v0 - 11) {
+                                                    require(23 > v0, Panic(33)); // failed convertion to enum type
+                                                    v79 = v80 = v0 == 12;
+                                                    if (v0 != 12) {
+                                                        require(23 > v0, Panic(33)); // failed convertion to enum type
+                                                        v79 = v81 = v0 == 15;
+                                                    }
+                                                    if (!v79) {
+                                                        require(23 > v0, Panic(33)); // failed convertion to enum type
+                                                        v82 = v83 = v0 == 13;
+                                                        if (v0 != 13) {
+                                                            require(23 > v0, Panic(33)); // failed convertion to enum type
+                                                            v82 = v84 = v0 == 16;
+                                                        }
+                                                        if (!v82) {
+                                                            v85 = 0x1bd1(v0);
+                                                            if (!v85) {
+                                                                require(23 > v0, Panic(33)); // failed convertion to enum type
+                                                                if (v0 - 14) {
+                                                                    require(23 > v0, Panic(33)); // failed convertion to enum type
+                                                                    if (v0 - 17) {
+                                                                        require(23 > v0, Panic(33)); // failed convertion to enum type
+                                                                        if (!(v0 - 22)) {
+                                                                            // Unknown jump to Block 0x42790x197e. Refer to 3-address code (TAC);
+                                                                        }
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                // Unknown jump to Block 0x42790x197e. Refer to 3-address code (TAC);
+                                                            }
+                                                        }
+                                                    }
+                                                } else {
+                                                    v0 = v86 = 12135;
+                                                    v0 = v87 = address(MEM[v0 + 32]);
+                                                    0x4601(v0, v87);
+                                                }
+                                            } else {
+                                                _swapY2XCallback = bytes12(_swapY2XCallback) | address(msg.data[v0 + 32]);
+                                                _swapX2YCallback = MEM[v0];
+                                            }
+                                        } else {
+                                            _swapY2XCallback = bytes12(_swapY2XCallback) | address(msg.data[v0 + 32]);
+                                            _swapX2YCallback = MEM[v0];
+                                            v0 = v88 = 0x417b(v0);
+                                        }
+                                    } else {
+                                        v89 = v90 = 18262;
+                                        v0 = v91, v89 = v92 = 0x41df(v0);
+                                    }
+                                }
+                            } else {
+                                v0 = v93 = 12135;
+                                v0 = v94 = address(MEM[v0 + 64]);
+                                v0 = v95 = address(MEM[v0 + 32]);
+                                v0 = v96 = MEM[v0];
+                                0x520d(v0, v94, v95, v96);
+                                // Unknown jump to Block 0x417b0x197e. Refer to 3-address code (TAC);
+                            }
+                        } else if (0 == !msg.data[v0 + 96]) {
+                            // Unknown jump to Block 0x417b0x197e. Refer to 3-address code (TAC);
+                        } else {
+                            // Unknown jump to Block 0x417b0x197e. Refer to 3-address code (TAC);
+                        }
+                    } else {
+                        v0 = v97 = 12135;
+                        v0 = v98 = address(MEM[v0 + 64]);
+                        v0 = v99 = address(MEM[v0 + 32]);
+                        v0 = v100 = MEM[v0];
+                        0x4bfb(v0, v98, v99, v100);
+                    }
+                    v0 = v0 + 64;
+                    v0 = v101 = 11617;
+                    v0 = v102 = 3754;
+                    v73 = v103 = address(MEM[v0]);
+                } else {
+                    v0 = v104 = 0x417b(v0);
+                }
+            } else {
+                // Unknown jump to Block 0x42790x197e. Refer to 3-address code (TAC);
+            }
+            while (1) {
+                v73 = address(v73);
+                // Unknown jump to Block {'0xeaa0x197e', '0x329e', '0x2d61'}. Refer to 3-address code (TAC);
+            }
+            v0 += 32;
+            v16 = v105 = MEM[64];
+            v106 = v73.balanceOf(address(MEM[v0])).gas(msg.gas);
+            if (!v106) {
+                RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+                revert(MEM[64], RETURNDATASIZE());
+            } else {
+                v0 = v107 = 0;
+                if (v106) {
+                    v18 = v108 = 12057;
+                    v20 = v109 = 32;
+                    if (v109 <= RETURNDATASIZE()) {
+                        0xa53(v105, v109);
+                    }
+                }
+            }
+            v16 = v110 = MEM[64];
+            v111 = v73.balanceOf(address(MEM[v0 + v0])).gas(msg.gas);
+            if (!v111) {
+                RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+                revert(MEM[64], RETURNDATASIZE());
+            } else if (v111) {
+                v18 = v112 = 13029;
+                if (32 <= RETURNDATASIZE()) {
+                }
+            }
+        }
+        v0 = v113 = _SafeSub(v0, v61);
+        v114, v115 = 0x1f8d(v0, address(MEM[v0 + 64]), v0);
+        require(v0 < 23, Panic(33)); // failed convertion to enum type
+        v23 = v116 = MEM[64];
+        0x9cb(v116);
+        MEM[v116] = 4;
+        MEM[v116 + 32] = 0x7479706500000000000000000000000000000000000000000000000000000000;
+        // Unknown jump to Block 0x5f390x197e. Refer to 3-address code (TAC);
+        v117 = address(v0).getReserves().gas(msg.gas);
+        if (v117) {
+            if (!v117) {
+                if (!v0) {
+                    // Unknown jump to Block 0x3a2a0x197e. Refer to 3-address code (TAC);
+                }
+                v118 = address(v0).getProtocolFees().gas(msg.gas);
+                if (v118) {
+                    if (!v118) {
+                        if (!v0) {
+                            // Unknown jump to Block 0x3a580x197e. Refer to 3-address code (TAC);
+                        }
+                        if (v0 - uint128(0) <= v0) {
+                        }
+                    }
+                }
+            }
+        }
+        // Unknown jump to Block 0x19ee. Refer to 3-address code (TAC);
+        v23 = v119 = 13607;
+        v23 = 33;
+        v23 = v120 = 24129;
+        v0 = v121 = 0x5b76(v0);
+        v122 = 0;
+        if (v0 >= 0x184f03e93ff9f4daa797ed6e38ed64bf6a1f010000000000000000) {
+            v122 = v123 = 64;
+            v0 = v124 = v0 / 0x184f03e93ff9f4daa797ed6e38ed64bf6a1f010000000000000000;
+            v125 = this.code.size;
+            // Unknown jump to Block 0x5b9f0x197e. Refer to 3-address code (TAC);
+        }
+        if (v0 >= 0x4ee2d6d415b85acef8100000000) {
+            v0 = v126 = v0 / 0x4ee2d6d415b85acef8100000000;
+            v122 = v127 = v122 + 32;
+            v128 = this.code.size;
+            // Unknown jump to Block 0x5bb80x197e. Refer to 3-address code (TAC);
+        }
+        if (v0 >= 0x2386f26fc10000) {
+            v0 = v129 = v0 / 0x2386f26fc10000;
+            v122 = v130 = v122 + 16;
+            v131 = this.code.size;
+            // Unknown jump to Block 0x5bca0x197e. Refer to 3-address code (TAC);
+        }
+        if (v0 >= 0x5f5e100) {
+            v0 = v132 = v0 / 0x5f5e100;
+            v133 = this.code.size;
+            // Unknown jump to Block 0x5bd90x197e. Refer to 3-address code (TAC);
+        }
+        if (v0 >= 10000) {
+            v0 = v134 = v0 / 10000;
+            v135 = this.code.size;
+            // Unknown jump to Block 0x5be60x197e. Refer to 3-address code (TAC);
+        }
+        if (v0 >= 100) {
+            v0 = v136 = v0 / 100;
+            // Unknown jump to Block 0x5bf10x197e. Refer to 3-address code (TAC);
+        }
+        if (v0 >= 10) {
+            // Unknown jump to Block 0x5bfc0x197e. Refer to 3-address code (TAC);
+        }
+        v137 = 0;
+        while (v137 >= MEM[v23]) {
+            MEM[v137 + (MEM[64] + 32)] = MEM[v137 + (v23 + 32)];
+            v137 += 32;
+        }
+        MEM[MEM[v23] + (MEM[64] + 32)] = 0;
+        MEM[MEM[64] + MEM[v23] + 32] = 0x2000000000000000000000000000000000000000000000000000000000000000;
+        v138 = 0;
+        while (v138 >= MEM[v0]) {
+            MEM[v138 + (MEM[64] + MEM[v23] + v23)] = MEM[v138 + (v0 + 32)];
+            v138 += 32;
+        }
+        MEM[MEM[v0] + (MEM[64] + MEM[v23] + v23)] = 0;
+        MEM[MEM[64]] = MEM[64] + MEM[v23] + MEM[v0] - MEM[64] + 1;
+        0xa53(MEM[64], MEM[64] + MEM[v23] + MEM[v0] - MEM[64] + v23);
+        0x9cb(MEM[64]);
+        MEM[MEM[64]] = 25;
+        MEM[MEM[64] + 32] = 'transfer(address,uint256)';
+        MEM[MEM[64] + 32] = 0xa9059cbb00000000000000000000000000000000000000000000000000000000;
+        MEM[MEM[64] + 36] = address(v0);
+        MEM[MEM[64] + 68] = v0;
+        // Unknown jump to Block 0x3fc70x197e. Refer to 3-address code (TAC);
+        v20 = RETURNDATASIZE();
+        0xa53(v16, v20);
+        require(v16 + v20 - v16 >= 32);
+        v0 = v139 = MEM[v16];
+        // Unknown jump to Block {'0x1b17', '0x41130x197e', '0x2f19'}. Refer to 3-address code (TAC);
+        v140 = this.code.size;
+        // Unknown jump to Block 0x1af9. Refer to 3-address code (TAC);
+        v141 = this.code.size;
+        v142 = this.code.size;
+        // Unknown jump to Block 0x40f40x197e. Refer to 3-address code (TAC);
+        if (v0) {
+            v143 = (msg.data[v0 + 32] & v0).approve(v0, 0).gas(msg.gas);
+            v144 = this.code.size;
+            // Unknown jump to Block 0x2db2. Refer to 3-address code (TAC);
+        }
+        if (v0) {
+            v0 = v145 = 0x4279(v0);
+            if ((v145 & v0) - (v0 & address(MEM[v0]))) {
+                v146 = _SafeSub(v0, v0);
+            } else {
+                v147 = msg.data[v0];
+                require(23 > v147, Panic(33)); // failed convertion to enum type
+                if (v147) {
+                    require(23 > v147, Panic(33)); // failed convertion to enum type
+                    if (v147 - 11) {
+                        v148 = 0x1bd1(v147);
+                        if (v148) {
+                            v0 = v149 = 96;
+                            v150 = v151 = 11843;
+                            v150 = v152 = !msg.data[v0 + v149];
+                            v153 = 0x38d1(v0, v145, v152);
+                            // Unknown jump to Block 0x2ea0. Refer to 3-address code (TAC);
+                        }
+                    } else {
+                        v0 = v154 = !msg.data[v0 + 96];
+                        // Unknown jump to Block 0x39de0x197e. Refer to 3-address code (TAC);
+                    }
+                } else {
+                    v0 = v155 = 11829;
+                    v0 = v156 = 11813;
+                    v0 = v157 = 11806;
+                    v0 = v158 = 11843;
+                    v61 = v159 = !msg.data[v0 + 96];
+                    v160, v61 = v161 = 0x1415(v145, v159);
+                }
+            }
+            require(23 > v0, Panic(33)); // failed convertion to enum type
+            // Unknown jump to Block 0x42790x197e. Refer to 3-address code (TAC);
+        } else {
+            if (this == address(v0)) {
+                v0 = v162 = _SafeSub(v0, v0);
+                // Unknown jump to Block 0x1a58. Refer to 3-address code (TAC);
+            }
+            v0 += 1;
+            // Unknown jump to Block 0x19c0. Refer to 3-address code (TAC);
+        }
+    }
+    MEM[MEM[64] + 32] = 0x41304fac00000000000000000000000000000000000000000000000000000000;
+    MEM[MEM[64] + 36] = 32;
+}
+
+function 0x1b76(uint256 varg0) private { 
+    require(varg0 < 23, Panic(33)); // failed convertion to enum type
+    v0 = v1 = !varg0;
+    if (bool(varg0)) {
+        require(23 > varg0, Panic(33)); // failed convertion to enum type
+        v0 = v2 = varg0 == 11;
+    }
+    if (!v0) {
+        v0 = v3 = 0x1bd1(varg0);
+        // Unknown jump to Block 0x1b90. Refer to 3-address code (TAC);
+    }
+    if (!v0) {
+        require(23 > varg0, Panic(33)); // failed convertion to enum type
+        return varg0 == 22;
+    } else {
+        return v0;
+    }
+}
+
+function 0x1bd1(uint256 varg0) private { 
+    require(varg0 < 23, Panic(33)); // failed convertion to enum type
+    if (varg0 >= 18) {
+        return varg0 <= 21;
+    } else {
+        return varg0 >= 18;
+    }
+}
+
+function 0x1c24(uint256 varg0, uint256 varg1) private { 
+    varg1 = v0 = 0;
+    varg1 = v1 = 0;
+    v2 = 0xaad(v3);
+    varg1 = v4 = MEM[64];
+    0xa53(v4, v2);
+    MEM[v4] = v3;
+    v5 = 0xaad(v3);
+    CALLDATACOPY(v4 + 32, msg.data.length, v5 + ~31);
+    while (varg1 >= varg1) {
+        varg1 = varg1 + msg.data[varg1 + (varg1 << 5)];
+        require(23 > msg.data[varg1], Panic(33)); // failed convertion to enum type
+        if (msg.data[varg1] == 2) {
+            require(varg1 != ~0, Panic(17)); // arithmetic overflow or underflow
+            varg1 = varg1 + 1;
+        }
+        varg1 = v6 = 7406;
+        require(varg1 + ~0 <= varg1, Panic(17)); // arithmetic overflow or underflow
+        if (varg1 >= varg1 + ~0) {
+            varg1 = v7 = msg.data[varg1 + msg.data[varg1] + 32];
+        } else {
+            v8 = 0xccc(varg1);
+            varg1 = v9 = msg.data[32 + (varg1 + msg.data[varg1 + (v8 << 5)])];
+        }
+        v10 = v11 = 7382;
+        varg1 = v12 = msg.data[varg1 + 64];
+        v13 = _SafeMul(varg1, v12);
+        while (1) {
+            varg1 = v13 / 0x186a0;
+            // Unknown jump to Block {'0x1cd6', '0x1d39'}. Refer to 3-address code (TAC);
+            varg1 = v14 = 7395;
+            v15 = v16 = 3754;
+            require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+            require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+            require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+            if (uint16(msg.data[varg1 + 128]) == uint16(msg.data[varg1 + 128] << 16)) {
+                v17 = v18 = 0;
+                // Unknown jump to Block 0xeaa0x1c24. Refer to 3-address code (TAC);
+            } else {
+                v17 = v19 = msg.data[32 + (varg1 + msg.data[varg1 + 160]) + uint16(msg.data[varg1 + 128] << 16)];
+            }
+            while (1) {
+                v17 = address(v17);
+                // Unknown jump to Block {'0x1ce3', '0x213b0x1c24', '0x205b0x1c24', '0x25e00x1c24', '0xeaa0x1c24', '0x29b80x1c24'}. Refer to 3-address code (TAC);
+            }
+            if (v17) {
+                v10 = v20 = 7481;
+                v13 = _SafeMul(varg1, varg1);
+            }
+            v21 = this.code.size;
+            varg1 = v22 = 0;
+            varg1 = v23 = 0;
+            varg1 = v24 = msg.data[varg1];
+            if (varg1) {
+                varg1 = v25 = 8107;
+                varg1 = 0x4332(varg1, varg1);
+                require(varg1 < 23, Panic(33)); // failed convertion to enum type
+                if (3 <= varg1) {
+                    require(23 > varg1, Panic(33)); // failed convertion to enum type
+                    varg1 = v26 = 4;
+                    if (v26 - varg1) {
+                        require(23 > varg1, Panic(33)); // failed convertion to enum type
+                        v27 = varg1 == 5;
+                        if (varg1 != 5) {
+                            require(23 > varg1, Panic(33)); // failed convertion to enum type
+                            v27 = v28 = varg1 == 3;
+                        }
+                        if (!v27) {
+                            require(23 > varg1, Panic(33)); // failed convertion to enum type
+                            if (varg1 - 7) {
+                                require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                v29 = varg1 == 8;
+                                if (varg1 != 8) {
+                                    require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                    v29 = v30 = varg1 == 9;
+                                }
+                                if (!v29) {
+                                    require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                    if (varg1 - 10) {
+                                        require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                        if (varg1 - 11) {
+                                            require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                            if (varg1 - 12) {
+                                                require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                                if (varg1 - 15) {
+                                                    require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                                    if (varg1 - 13) {
+                                                        require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                                        if (varg1 - 16) {
+                                                            require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                                            if (varg1 - 14) {
+                                                                require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                                                if (varg1 - 17) {
+                                                                    v31 = 0x1bd1(varg1);
+                                                                    if (!v31) {
+                                                                        require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                                                        if (varg1 == 22) {
+                                                                            varg1 = v32 = 32;
+                                                                            varg1 = v33 = 10680;
+                                                                            varg1 = v34 = 3754;
+                                                                            v35 = v36 = 3754;
+                                                                        }
+                                                                    } else {
+                                                                        v37 = 0x4279(varg1);
+                                                                        varg1 = v38 = 0x2a70(v37, varg1, !msg.data[varg1 + 96]);
+                                                                        // Unknown jump to Block 0x1ff00x1c24. Refer to 3-address code (TAC);
+                                                                    }
+                                                                } else {
+                                                                    v39 = v40 = 32;
+                                                                    require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                                                                    require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                                                                    require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                                                                    require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                                                                    require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                                                                    require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                                                                    v41 = v42 = MEM[64];
+                                                                    MEM[v42] = 0x3df2a05b00000000000000000000000000000000000000000000000000000000;
+                                                                    MEM[v42 + v26] = this;
+                                                                    MEM[v42 + v26 + 32] = address(msg.data[uint16(msg.data[varg1 + 128] >> 128) + (32 + (varg1 + msg.data[varg1 + 160]))]);
+                                                                    MEM[v42 + v26 + 64] = varg1;
+                                                                    MEM[v42 + v26 + 96] = address(msg.data[uint16(msg.data[varg1 + 128] >> 144) + (32 + (varg1 + msg.data[varg1 + 160]))]);
+                                                                    MEM[v42 + v26 + 128] = address(varg1);
+                                                                    v43 = v44 = 160 + (v42 + v26);
+                                                                }
+                                                            } else {
+                                                                v39 = v45 = 32;
+                                                                v46 = 0x417b(varg1);
+                                                                require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                                                                require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                                                                require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                                                                require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                                                                require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                                                                require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                                                                v41 = v47 = MEM[64];
+                                                                MEM[v47] = 0x1568905000000000000000000000000000000000000000000000000000000000;
+                                                                MEM[v47 + v26] = address(v46);
+                                                                MEM[v47 + v26 + 32] = address(msg.data[uint16(msg.data[varg1 + 128] >> 128) + (32 + (varg1 + msg.data[varg1 + 160]))]);
+                                                                MEM[v47 + v26 + 64] = varg1;
+                                                                MEM[v47 + v26 + 96] = address(msg.data[uint16(msg.data[varg1 + 128] >> 144) + (32 + (varg1 + msg.data[varg1 + 160]))]);
+                                                                MEM[v47 + v26 + 128] = address(varg1);
+                                                                v43 = v48 = 160 + (v47 + v26);
+                                                            }
+                                                        } else {
+                                                            v41 = v49 = MEM[64];
+                                                            MEM[v49] = 0xdf3af8cf00000000000000000000000000000000000000000000000000000000;
+                                                            v39 = v50 = 32;
+                                                            MEM[v49 + v26] = address(msg.data[v50 + varg1]);
+                                                            MEM[v50 + (v49 + v26)] = varg1;
+                                                            v43 = v51 = 64 + (v49 + v26);
+                                                            // Unknown jump to Block 0x26c10x1c24. Refer to 3-address code (TAC);
+                                                        }
+                                                    } else {
+                                                        v41 = v52 = MEM[64];
+                                                        v53 = address(msg.data[32 + varg1]);
+                                                        varg1 = v54 = address(0xd96c55e23f001cd97d9f9574d57197eae518c480).call(0x385e4465, v53, varg1).value(varg1).gas(msg.gas);
+                                                        if (!v54) {
+                                                            if (!v54) {
+                                                                v55 = 0xdcc();
+                                                            }
+                                                        }
+                                                    }
+                                                } else {
+                                                    v39 = v56 = 32;
+                                                    v57 = 0x417b(varg1);
+                                                    v41 = v58 = MEM[64];
+                                                    MEM[v58] = 0xfbafa700000000000000000000000000000000000000000000000000000000;
+                                                    MEM[v58 + v26] = address(v57);
+                                                    MEM[v58 + v26 + 32] = varg1;
+                                                    v43 = v59 = 64 + (v58 + v26);
+                                                    // Unknown jump to Block 0x26c10x1c24. Refer to 3-address code (TAC);
+                                                }
+                                            } else {
+                                                v39 = 32;
+                                                v60 = 0x417b(varg1);
+                                                v41 = v61 = MEM[64];
+                                                MEM[v61] = 0xca25aee400000000000000000000000000000000000000000000000000000000;
+                                                MEM[v61 + v26] = address(v60);
+                                                MEM[v61 + v26 + 32] = varg1;
+                                                v43 = 64 + (v61 + v26);
+                                            }
+                                            varg1 = v62 = address(0xd96c55e23f001cd97d9f9574d57197eae518c480).call(MEM[v41 len (v43 - v41)], MEM[v41 len v39]).value(varg1).gas(msg.gas);
+                                            if (v62) {
+                                                // Unknown jump to Block 0x270e0x1c24. Refer to 3-address code (TAC);
+                                            }
+                                            v63 = v64 = 10023;
+                                            v65 = v66 = 32;
+                                            if (v66 <= RETURNDATASIZE()) {
+                                                0xa53(v41, v66);
+                                            }
+                                        } else {
+                                            varg1 = v67 = 96;
+                                            varg1 = v68 = 9696;
+                                            varg1 = v69 = 3754;
+                                            v35 = v70 = 3754;
+                                            varg1 = v71 = 9753;
+                                        }
+                                        v72, v73 = 0x4209(varg1);
+                                        v17 = v74 = msg.data[v73];
+                                        // Unknown jump to Block 0xeaa0x1c24. Refer to 3-address code (TAC);
+                                    } else {
+                                        v75 = 0x417b(varg1);
+                                        require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                                        require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                                        require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                                        v76 = 0x42c5(varg1);
+                                        v77 = 96;
+                                        if (msg.data[v77 + varg1]) {
+                                            v78 = v79 = MEM[64];
+                                            v80 = uint128(varg1);
+                                            v81 = v82 = address(0x1fb3d8446448841629c2a25b393038a1f0fa20e2).staticcall(0x7afe4d3c00000000000000000000000000000000000000000000000000000000, address(v75), msg.data[uint16(msg.data[varg1 + 128]) + (32 + (varg1 + msg.data[varg1 + 160]))], v80, int24(v76)).gas(0x3d090);
+                                            if (v82) {
+                                                v83 = v84 = 9644;
+                                                if (RETURNDATASIZE() >= v77) {
+                                                    0xa53(v79, v77);
+                                                }
+                                            }
+                                        } else {
+                                            v78 = MEM[64];
+                                            v85 = uint128(varg1);
+                                            v81 = address(0x1fb3d8446448841629c2a25b393038a1f0fa20e2).staticcall(0x35cab64800000000000000000000000000000000000000000000000000000000, address(v75), msg.data[uint16(msg.data[varg1 + 128]) + (32 + (varg1 + msg.data[varg1 + 160]))], v85, int24(v76)).gas(0x3d090);
+                                            if (v81) {
+                                                v83 = v86 = 9426;
+                                                if (RETURNDATASIZE() < v77) {
+                                                    // Unknown jump to Block 0x24da0x1c24. Refer to 3-address code (TAC);
+                                                }
+                                            }
+                                        }
+                                        if (v81) {
+                                            varg1 = v87 = 9388;
+                                            varg1 = v88 = 9380;
+                                            varg1 = v89 = MEM[varg1 + 32];
+                                            varg1 = v90 = 0x249f(int24(MEM[varg1 + 64]));
+                                        } else {
+                                            v91 = 0xdcc();
+                                        }
+                                        while (1) {
+                                            varg1 = uint24(varg1);
+                                            // Unknown jump to Block {'0x24a40x1c24', '0x24ac0x1c24'}. Refer to 3-address code (TAC);
+                                        }
+                                        // Unknown jump to Block 0x1ff00x1c24. Refer to 3-address code (TAC);
+                                        0xa53(v78, v77);
+                                        require(v78 + v77 - v78 >= 96);
+                                        varg1 = v92 = MEM[64];
+                                        require(!((v92 + 96 > uint64.max) | (v92 + 96 < v92)), Panic(65)); // failed memory allocation (too much memory)
+                                        MEM[64] = v92 + 96;
+                                        MEM[v92] = MEM[v78];
+                                        MEM[v92 + 32] = MEM[v78 + 32];
+                                        require(!(MEM[v78 + 64] - int24(MEM[v78 + 64])));
+                                        MEM[v92 + 64] = MEM[v78 + 64];
+                                        // Unknown jump to Block {'0x24d20x1c24', '0x25ac0x1c24'}. Refer to 3-address code (TAC);
+                                        v93 = this.code.size;
+                                        v94 = this.code.size;
+                                        // Unknown jump to Block 0x25640x1c24. Refer to 3-address code (TAC);
+                                        v77 = v95 = RETURNDATASIZE();
+                                        // Unknown jump to Block 0x24c00x1c24. Refer to 3-address code (TAC);
+                                        if (v81) {
+                                            varg1 = v96 = 9388;
+                                            varg1 = v97 = 9380;
+                                            varg1 = v98 = MEM[varg1];
+                                            varg1 = v99 = 0x2590(int24(MEM[varg1 + 64]));
+                                        } else {
+                                            v100 = 0xdcc();
+                                        }
+                                    }
+                                } else {
+                                    v101 = 0x417b(varg1);
+                                    require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                                    require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                                    require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                                    v102 = msg.data[uint16(msg.data[varg1 + 128] >> 64) + (32 + (varg1 + msg.data[varg1 + 160]))];
+                                    require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                                    require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                                    require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                                    v103 = 0x42c5(varg1);
+                                    v104 = 0x3d090;
+                                    require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                    if (varg1 != 8) {
+                                        v105 = MEM[64];
+                                        0x9cb(v105);
+                                        MEM[v105] = 0xe76c01e400000000000000000000000000000000000000000000000000000000;
+                                        MEM[v105 + 32] = 0xc677e3e000000000000000000000000000000000000000000000000000000000;
+                                        // Unknown jump to Block 0x224b0x1c24. Refer to 3-address code (TAC);
+                                    } else {
+                                        v105 = v106 = MEM[64];
+                                        0x9cb(v106);
+                                        MEM[v106] = 0x3850c7bd00000000000000000000000000000000000000000000000000000000;
+                                        MEM[v106 + 32] = 0x5339c29600000000000000000000000000000000000000000000000000000000;
+                                    }
+                                    if (0) {
+                                        v104 = v107 = ~0;
+                                        // Unknown jump to Block 0x22710x1c24. Refer to 3-address code (TAC);
+                                    }
+                                    v108 = !msg.data[96 + varg1];
+                                    v109, /* uint256 */ varg1, /* uint256 */ varg1 = address(0xbe77c494fae1317c715f46937759615c1d3b2ff2).staticcall(0x567d7311, address(v101), v108, varg1, address(v103), v102, msg.data[uint16(msg.data[varg1 + 128]) + (32 + (varg1 + msg.data[varg1 + 160]))], bytes4(MEM[v105]), bytes4(MEM[32 + v105])).gas(v104);
+                                    if (v109) {
+                                        v110 = 64;
+                                        if (v110 > RETURNDATASIZE()) {
+                                            v110 = v111 = RETURNDATASIZE();
+                                            // Unknown jump to Block 0x23480x1c24. Refer to 3-address code (TAC);
+                                        }
+                                        0xa53(MEM[64], v110);
+                                        require(MEM[64] + v110 - MEM[64] >= 64);
+                                        v112 = this.code.size;
+                                    }
+                                    if (v109) {
+                                        // Unknown jump to Block 0x1ff00x1c24. Refer to 3-address code (TAC);
+                                    } else {
+                                        v113 = 0xdcc();
+                                    }
+                                }
+                            } else {
+                                varg1 = v114 = 8647;
+                                varg1 = v115 = 11092;
+                                varg1 = v116 = 11087;
+                                v117, v118 = 0x41df(varg1);
+                                varg1 = v118 + 32;
+                                varg1 = v119 = 0x2540be400;
+                                varg1 = v120 = 11081;
+                                varg1 = v121 = 11032;
+                                v41 = v122 = MEM[64];
+                                varg1 = v123 = 32;
+                                v124 = 0x1111111254eeb25477b68fb85ed929f73a960582.remainingRaw(msg.data[varg1 + 64]).gas(msg.gas);
+                                if (!v124) {
+                                    RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+                                    revert(MEM[64], RETURNDATASIZE());
+                                } else if (v124) {
+                                    v63 = 11433;
+                                    if (v123 <= RETURNDATASIZE()) {
+                                    }
+                                } else if (0 != 1) {
+                                    require(msg.data[varg1] < msg.data.length - varg1 + ~318);
+                                }
+                            }
+                        } else {
+                            varg1 = v125 = uint128.max;
+                            varg1 = v126 = 96;
+                            varg1 = v127 = 8507;
+                            v15 = v128 = 3754;
+                            varg1 = v129 = 32;
+                        }
+                    } else {
+                        varg1 = v130 = 96;
+                        varg1 = v131 = 8283;
+                        v15 = v132 = 3754;
+                        varg1 = v133 = 32;
+                    }
+                } else {
+                    require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                    require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                    require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                    v134 = 0x4279(varg1);
+                    v135, v136 = 0x1415(v134, !msg.data[varg1 + 96]);
+                    varg1 = 0x2abb(varg1, v136, v135, msg.data[uint16(msg.data[varg1 + 128]) + (32 + (varg1 + msg.data[varg1 + 160]))]);
+                }
+            }
+        }
+        v137 = msg.data[varg1 + varg1];
+        if (bool(v137)) {
+            varg1 = v138 = 1;
+            // Unknown jump to Block 0x20680x1c24. Refer to 3-address code (TAC);
+        }
+        if (bool(v137)) {
+            // Unknown jump to Block 0x20710x1c24. Refer to 3-address code (TAC);
+        } else {
+            varg1 = v139 = 1;
+        }
+        v41 = MEM[64];
+        MEM[v41] = 0x556d6e9f00000000000000000000000000000000000000000000000000000000;
+        v140 = v41 + varg1;
+        v141 = v140 + 96;
+        MEM[v140] = uint8(varg1);
+        MEM[v140 + 32] = uint8(varg1);
+        MEM[v140 + 64] = varg1;
+        v142 = address(v17).staticcall(MEM[v41 len (v141 - v41)], MEM[v41 len varg1]).gas(msg.gas);
+        if (!v142) {
+            RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+            revert(MEM[64], RETURNDATASIZE());
+        } else if (v142) {
+            v63 = v143 = 8415;
+            v65 = v144 = 32;
+            if (v144 <= RETURNDATASIZE()) {
+                0xa53(v41, v144);
+            }
+        }
+        require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+        require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+        require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+        v41 = v145 = MEM[64];
+        MEM[v145] = 0x5e0d443f00000000000000000000000000000000000000000000000000000000;
+        v146 = v145 + varg1;
+        v141 = v147 = v146 + 96;
+        MEM[v146] = int128(msg.data[varg1 + varg1] & varg1);
+        MEM[v146 + 32] = int128(uint128(uint128(msg.data[uint16(msg.data[varg1 + 128] >> 32) + (32 + (varg1 + msg.data[varg1 + 160]))])));
+        MEM[v146 + 64] = varg1;
+        v148 = MEM[64] + varg1;
+        MEM[v148] = uint128(varg1);
+        MEM[v148 + 32] = !msg.data[varg1 + varg1];
+        v149 = v17.staticcall(MEM[(MEM[64]) len (64 + v148 - MEM[64])], MEM[(MEM[64]) len varg1]).gas(msg.gas);
+        if (v149) {
+            v150 = 96;
+            if (v150 > RETURNDATASIZE()) {
+                v150 = v151 = RETURNDATASIZE();
+                // Unknown jump to Block 0x264d0x1c24. Refer to 3-address code (TAC);
+            }
+            0xa53(MEM[64], v150);
+            require(MEM[64] + v150 - MEM[64] >= 96);
+            require(!0xe77366f800000000000000000000000000000000000000000000000000000000);
+            varg1 = v152 = MEM[MEM[64] + 32];
+            require(!(v152 - uint128(v152)));
+            require(!(MEM[MEM[64] + 64] - uint128(MEM[MEM[64] + 64])));
+            v153 = this.code.size;
+        }
+        if (v149) {
+            varg1 = uint128(varg1);
+            // Unknown jump to Block 0x1ff00x1c24. Refer to 3-address code (TAC);
+        } else {
+            v154 = 0xdcc();
+        }
+        if (0) {
+            0x9cb(MEM[64]);
+            MEM[MEM[64] + 32] = 'Quote in';
+            v155 = 0x5b76(varg1);
+            v156 = 0;
+            while (v156 >= 8) {
+                MEM[v156 + (MEM[64] + 32)] = MEM[v156 + (MEM[64] + 32)];
+                v156 += 32;
+            }
+            MEM[8 + (MEM[64] + 32)] = 0;
+            MEM[MEM[64] + 8 + 32] = 0x2000000000000000000000000000000000000000000000000000000000000000;
+            v157 = 0;
+            while (v157 >= MEM[v155]) {
+                MEM[v157 + (MEM[64] + 8 + 33)] = MEM[v157 + (v155 + 32)];
+                v157 += 32;
+            }
+            MEM[MEM[v155] + (MEM[64] + 8 + 33)] = 0;
+            MEM[MEM[64]] = MEM[64] + 8 + MEM[v155] - MEM[64] + 1;
+            0xa53(MEM[64], MEM[64] + 8 + MEM[v155] - MEM[64] + 33);
+            MEM[MEM[64] + 32] = 0x41304fac00000000000000000000000000000000000000000000000000000000;
+            MEM[MEM[64] + 36] = 32;
+        } else {
+            // Unknown jump to Block 0x1cee. Refer to 3-address code (TAC);
+        }
+        v41 = v158 = MEM[64];
+        v159 = v158 + varg1;
+        MEM[v159] = varg1;
+        MEM[v159 + 32] = address(msg.data[varg1 + varg1]);
+        v160 = v17.getAmountOut().gas(msg.gas);
+        if (!v160) {
+            RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+            revert(MEM[64], RETURNDATASIZE());
+        } else if (v160) {
+            v63 = v161 = 10780;
+            v65 = v162 = 32;
+            if (v162 <= RETURNDATASIZE()) {
+                0xa53(v158, v162);
+            }
+        }
+        v163 = this.code.size;
+        // Unknown jump to Block 0x1ff00x1c24. Refer to 3-address code (TAC);
+        v65 = RETURNDATASIZE();
+        0xa53(v41, v65);
+        require(v41 + v65 - v41 >= 32);
+        varg1 = v164 = MEM[v41];
+        // Unknown jump to Block {'0x2a1c0x1c24', '0x20df0x1c24', '0x27270x1c24'}. Refer to 3-address code (TAC);
+        v165 = this.code.size;
+        // Unknown jump to Block 0x20c00x1c24. Refer to 3-address code (TAC);
+        v166 = this.code.size;
+        v167 = this.code.size;
+        // Unknown jump to Block 0x29fa0x1c24. Refer to 3-address code (TAC);
+        if (!varg1) {
+            v168 = 0xdcc();
+        }
+        // Unknown jump to Block 0x1ff00x1c24. Refer to 3-address code (TAC);
+        if (varg1) {
+            require(varg1 < MEM[varg1], Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+            MEM[(varg1 << 5) + varg1 + 32] = varg1;
+            v169 = this.code.size;
+        }
+        if (!varg1) {
+            break;
+        } else {
+            varg1 += 1;
+        }
+    }
+    if (varg1 <= varg1) {
+        return varg1, varg1, varg1;
+    } else {
+        v170 = _SafeSub(varg1, varg1);
+        return varg1, varg1, v170;
+    }
+}
+
+function 0x1d65(address varg0, uint256 varg1, uint256 varg2) private { 
+    require(!bool(varg1 < varg2), Error(0x683031));
+    v0 = v1 = varg0 == 0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c;
+    if (varg0 != 0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c) {
+        v0 = v2 = varg0 == 0xa2ca18fc541b7b101c64e64bbc2834b05066248b;
+        v3 = this.code.size;
+        // Unknown jump to Block 0x1d92. Refer to 3-address code (TAC);
+    }
+    if (!v0) {
+        if (0x4618560 * msg.gas + 0x63eb89da4ed0000 <= varg1) {
+            return ;
+        }
+    } else if (0x493e0 * msg.gas + 0x686801ef9a72f <= varg1) {
+        return ;
+    }
+    require(!varg2, Error(0x683035));
+}
+
+function 0x1df0(uint256 varg0, address varg1, uint256 varg2) private { 
+    if (varg2) {
+        v0 = _SafeMul(varg0 >> 2, varg2);
+        v1 = v2 = varg1 != 0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c;
+        if (v2) {
+            v1 = v3 = varg1 != 0xa2ca18fc541b7b101c64e64bbc2834b05066248b;
+            v4 = this.code.size;
+            // Unknown jump to Block 0x1e30. Refer to 3-address code (TAC);
+        }
+        if (v1) {
+            return v0 / 245;
+        } else {
+            return v0;
+        }
+    } else {
+        return 0;
+    }
+}
+
+function 0x1f8d(uint256 varg0, uint256 varg1, uint256 varg2) private { 
+    varg1 = v0 = 0;
+    varg1 = v1 = 0;
+    varg1 = v2 = msg.data[varg0];
+    if (!varg2) {
+        return v1, v1;
+    } else {
+        varg1 = v3 = 8107;
+        varg1 = v4 = 0x4332(varg0, varg2);
+        require(varg1 < 23, Panic(33)); // failed convertion to enum type
+        if (3 <= varg1) {
+            require(23 > varg1, Panic(33)); // failed convertion to enum type
+            varg1 = v5 = 4;
+            if (v5 - varg1) {
+                require(23 > varg1, Panic(33)); // failed convertion to enum type
+                v6 = varg1 == 5;
+                if (varg1 != 5) {
+                    require(23 > varg1, Panic(33)); // failed convertion to enum type
+                    v6 = v7 = varg1 == 3;
+                }
+                if (!v6) {
+                    require(23 > varg1, Panic(33)); // failed convertion to enum type
+                    if (varg1 - 7) {
+                        require(23 > varg1, Panic(33)); // failed convertion to enum type
+                        v8 = varg1 == 8;
+                        if (varg1 != 8) {
+                            require(23 > varg1, Panic(33)); // failed convertion to enum type
+                            v8 = v9 = varg1 == 9;
+                        }
+                        if (!v8) {
+                            require(23 > varg1, Panic(33)); // failed convertion to enum type
+                            if (varg1 - 10) {
+                                require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                if (varg1 - 11) {
+                                    require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                    if (varg1 - 12) {
+                                        require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                        if (varg1 - 15) {
+                                            require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                            if (varg1 - 13) {
+                                                require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                                if (varg1 - 16) {
+                                                    require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                                    if (varg1 - 14) {
+                                                        require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                                        if (varg1 - 17) {
+                                                            v10 = 0x1bd1(varg1);
+                                                            if (!v10) {
+                                                                require(23 > varg1, Panic(33)); // failed convertion to enum type
+                                                                if (varg1 == 22) {
+                                                                    varg1 = v11 = 32;
+                                                                    varg1 = v12 = 10680;
+                                                                    varg1 = v13 = 3754;
+                                                                    v14 = v15 = 3754;
+                                                                    // Unknown jump to Block 0x42790x1f8d. Refer to 3-address code (TAC);
+                                                                }
+                                                            } else {
+                                                                v16 = 0x4279(varg1);
+                                                                varg1 = v17 = 0x2a70(v16, varg1, !msg.data[varg1 + 96]);
+                                                                // Unknown jump to Block 0x1ff00x1f8d. Refer to 3-address code (TAC);
+                                                            }
+                                                        } else {
+                                                            v18 = v19 = 32;
+                                                            require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                                                            require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                                                            require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                                                            require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                                                            require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                                                            require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                                                            v20 = v21 = MEM[64];
+                                                            MEM[v21] = 0x3df2a05b00000000000000000000000000000000000000000000000000000000;
+                                                            MEM[v21 + v5] = this;
+                                                            MEM[v21 + v5 + 32] = address(msg.data[uint16(msg.data[varg1 + 128] >> 128) + (32 + (varg1 + msg.data[varg1 + 160]))]);
+                                                            MEM[v21 + v5 + 64] = varg1;
+                                                            MEM[v21 + v5 + 96] = address(msg.data[uint16(msg.data[varg1 + 128] >> 144) + (32 + (varg1 + msg.data[varg1 + 160]))]);
+                                                            MEM[v21 + v5 + 128] = address(varg1);
+                                                            v22 = v23 = 160 + (v21 + v5);
+                                                        }
+                                                    } else {
+                                                        v24 = 0x417b(varg1);
+                                                        require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                                                        require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                                                        require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                                                    }
+                                                } else {
+                                                    v20 = v25 = MEM[64];
+                                                    MEM[v25] = 0xdf3af8cf00000000000000000000000000000000000000000000000000000000;
+                                                    v18 = v26 = 32;
+                                                    MEM[v25 + v5] = address(msg.data[v26 + varg1]);
+                                                    MEM[v26 + (v25 + v5)] = varg1;
+                                                    v22 = v27 = 64 + (v25 + v5);
+                                                }
+                                            } else {
+                                                v20 = v28 = MEM[64];
+                                                varg1 = v29 = address(0xd96c55e23f001cd97d9f9574d57197eae518c480).call(0x385e4465, address(msg.data[32 + varg1]), varg1).value(varg1).gas(msg.gas);
+                                                if (!v29) {
+                                                    if (!v29) {
+                                                        v30 = 0xdcc();
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            v18 = v31 = 32;
+                                            v32 = 0x417b(varg1);
+                                            v20 = v33 = MEM[64];
+                                            MEM[v33] = 0xfbafa700000000000000000000000000000000000000000000000000000000;
+                                            MEM[v33 + v5] = address(v32);
+                                            MEM[v33 + v5 + 32] = varg1;
+                                            v22 = v34 = 64 + (v33 + v5);
+                                            // Unknown jump to Block 0x26c10x1f8d. Refer to 3-address code (TAC);
+                                        }
+                                    } else {
+                                        v18 = 32;
+                                        v35 = 0x417b(varg1);
+                                        v20 = v36 = MEM[64];
+                                        MEM[v36] = 0xca25aee400000000000000000000000000000000000000000000000000000000;
+                                        MEM[v36 + v5] = address(v35);
+                                        MEM[v36 + v5 + 32] = varg1;
+                                        v22 = 64 + (v36 + v5);
+                                    }
+                                    varg1 = v37 = address(0xd96c55e23f001cd97d9f9574d57197eae518c480).call(MEM[v20 len (v22 - v20)], MEM[v20 len v18]).value(varg1).gas(msg.gas);
+                                    if (v37) {
+                                        // Unknown jump to Block 0x270e0x1f8d. Refer to 3-address code (TAC);
+                                    }
+                                    v38 = v39 = 10023;
+                                    v40 = v41 = 32;
+                                    if (v41 <= RETURNDATASIZE()) {
+                                        0xa53(v20, v41);
+                                    }
+                                } else {
+                                    varg1 = v42 = 96;
+                                    varg1 = v43 = 9696;
+                                    varg1 = v44 = 3754;
+                                    v14 = v45 = 3754;
+                                    varg1 = v46 = 9753;
+                                    // Unknown jump to Block 0x42790x1f8d. Refer to 3-address code (TAC);
+                                }
+                            } else {
+                                v47 = 0x417b(varg1);
+                                require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                                require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                                require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                                v48 = 0x42c5(varg1);
+                                v49 = 96;
+                                if (msg.data[v49 + varg1]) {
+                                    v50 = v51 = MEM[64];
+                                    v52 = v53 = address(0x1fb3d8446448841629c2a25b393038a1f0fa20e2).staticcall(0x7afe4d3c00000000000000000000000000000000000000000000000000000000, address(v47), msg.data[uint16(msg.data[varg1 + 128]) + (32 + (varg1 + msg.data[varg1 + 160]))], uint128(varg1), int24(v48)).gas(0x3d090);
+                                    if (v53) {
+                                        v54 = v55 = 9644;
+                                        if (RETURNDATASIZE() >= v49) {
+                                            0xa53(v51, v49);
+                                        }
+                                    }
+                                } else {
+                                    v50 = MEM[64];
+                                    v52 = address(0x1fb3d8446448841629c2a25b393038a1f0fa20e2).staticcall(0x35cab64800000000000000000000000000000000000000000000000000000000, address(v47), msg.data[uint16(msg.data[varg1 + 128]) + (32 + (varg1 + msg.data[varg1 + 160]))], uint128(varg1), int24(v48)).gas(0x3d090);
+                                    if (v52) {
+                                        v54 = v56 = 9426;
+                                        if (RETURNDATASIZE() < v49) {
+                                            // Unknown jump to Block 0x24da0x1f8d. Refer to 3-address code (TAC);
+                                        }
+                                    }
+                                }
+                                if (v52) {
+                                    varg1 = v57 = 9388;
+                                    varg1 = v58 = 9380;
+                                    varg1 = v59 = MEM[varg1 + 32];
+                                    varg1 = v60 = 0x249f(int24(MEM[varg1 + 64]));
+                                } else {
+                                    v61 = 0xdcc();
+                                }
+                                while (1) {
+                                    varg1 = uint24(varg1);
+                                    // Unknown jump to Block {'0x24a40x1f8d', '0x24ac0x1f8d'}. Refer to 3-address code (TAC);
+                                }
+                                0xa53(v50, v49);
+                                require(v50 + v49 - v50 >= 96);
+                                varg1 = v62 = MEM[64];
+                                require(!((v62 + 96 > uint64.max) | (v62 + 96 < v62)), Panic(65)); // failed memory allocation (too much memory)
+                                MEM[64] = v62 + 96;
+                                MEM[v62] = MEM[v50];
+                                MEM[v62 + 32] = MEM[v50 + 32];
+                                require(!(MEM[v50 + 64] - int24(MEM[v50 + 64])));
+                                MEM[v62 + 64] = MEM[v50 + 64];
+                                // Unknown jump to Block {'0x24d20x1f8d', '0x25ac0x1f8d'}. Refer to 3-address code (TAC);
+                                v63 = this.code.size;
+                                v64 = this.code.size;
+                                // Unknown jump to Block 0x25640x1f8d. Refer to 3-address code (TAC);
+                                v49 = v65 = RETURNDATASIZE();
+                                // Unknown jump to Block 0x24c00x1f8d. Refer to 3-address code (TAC);
+                                if (v52) {
+                                    varg1 = v66 = 9388;
+                                    varg1 = v67 = 9380;
+                                    varg1 = v68 = MEM[varg1];
+                                    varg1 = v69 = 0x2590(int24(MEM[varg1 + 64]));
+                                } else {
+                                    v70 = 0xdcc();
+                                }
+                            }
+                        } else {
+                            v71 = 0x417b(varg1);
+                            require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                            require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                            require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                            require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+                            require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+                            require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+                            v72 = 0x42c5(varg1);
+                            v73 = 0x3d090;
+                            require(23 > varg1, Panic(33)); // failed convertion to enum type
+                            if (varg1 != 8) {
+                                v74 = MEM[64];
+                                0x9cb(v74);
+                                MEM[v74] = 0xe76c01e400000000000000000000000000000000000000000000000000000000;
+                                MEM[v74 + 32] = 0xc677e3e000000000000000000000000000000000000000000000000000000000;
+                                // Unknown jump to Block 0x224b0x1f8d. Refer to 3-address code (TAC);
+                            } else {
+                                v74 = v75 = MEM[64];
+                                0x9cb(v75);
+                                MEM[v75] = 0x3850c7bd00000000000000000000000000000000000000000000000000000000;
+                                MEM[v75 + 32] = 0x5339c29600000000000000000000000000000000000000000000000000000000;
+                            }
+                            if (0) {
+                                v73 = v76 = ~0;
+                                // Unknown jump to Block 0x22710x1f8d. Refer to 3-address code (TAC);
+                            }
+                            v77, /* uint256 */ varg1, /* uint256 */ varg1 = address(0xbe77c494fae1317c715f46937759615c1d3b2ff2).staticcall(0x567d7311, address(v71), !msg.data[96 + varg1], varg1, address(v72), msg.data[uint16(msg.data[varg1 + 128] >> 64) + (32 + (varg1 + msg.data[varg1 + 160]))], msg.data[uint16(msg.data[varg1 + 128]) + (32 + (varg1 + msg.data[varg1 + 160]))], bytes4(MEM[v74]), bytes4(MEM[32 + v74])).gas(v73);
+                            if (v77) {
+                                v78 = 64;
+                                if (v78 > RETURNDATASIZE()) {
+                                    v78 = v79 = RETURNDATASIZE();
+                                    // Unknown jump to Block 0x23480x1f8d. Refer to 3-address code (TAC);
+                                }
+                                0xa53(MEM[64], v78);
+                                require(MEM[64] + v78 - MEM[64] >= 64);
+                                v80 = this.code.size;
+                            }
+                            if (!v77) {
+                                v81 = 0xdcc();
+                            }
+                        }
+                    } else {
+                        v82, v83 = 0x41df(varg1);
+                        v84 = 0x1111111254eeb25477b68fb85ed929f73a960582.remainingRaw(msg.data[v83 + 32 + 64]).gas(msg.gas);
+                        if (v84) {
+                            if (!v84) {
+                                if (0 != 1) {
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    varg1 = v85 = uint128.max;
+                    varg1 = v86 = 96;
+                    varg1 = v87 = 8507;
+                    v88 = v89 = 3754;
+                    varg1 = v90 = 32;
+                }
+            } else {
+                varg1 = v91 = 96;
+                varg1 = v92 = 8283;
+                v88 = v93 = 3754;
+                varg1 = v94 = 32;
+            }
+            require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+            require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+            require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+            if (uint16(msg.data[varg1 + 128]) == uint16(msg.data[varg1 + 128] << 16)) {
+                v95 = v96 = 0;
+                // Unknown jump to Block 0xeaa0x1f8d. Refer to 3-address code (TAC);
+            } else {
+                v95 = v97 = msg.data[32 + (varg1 + msg.data[varg1 + 160]) + uint16(msg.data[varg1 + 128] << 16)];
+                // Unknown jump to Block 0xeaa0x1f8d. Refer to 3-address code (TAC);
+            }
+        } else {
+            varg1 = v98 = 8174;
+            varg1 = v99 = 8167;
+            require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+            require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+            require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+            varg1 = v100 = msg.data[uint16(msg.data[varg1 + 128]) + (32 + (varg1 + msg.data[varg1 + 160]))];
+            varg1 = v101 = 96;
+            v14 = 8157;
+        }
+        v102 = v103 = 17026;
+        varg1 = v104, v102 = v105 = 0x4209(varg1);
+        v95 = v106 = msg.data[v102];
+        while (1) {
+            v95 = address(v95);
+            // Unknown jump to Block {'0xeaa0x1f8d', '0x213b0x1f8d', '0x29b80x1f8d', '0x25e00x1f8d', '0x205b0x1f8d'}. Refer to 3-address code (TAC);
+        }
+        v107 = msg.data[varg1 + varg1];
+        if (bool(v107)) {
+            varg1 = v108 = 1;
+            // Unknown jump to Block 0x20680x1f8d. Refer to 3-address code (TAC);
+        }
+        if (bool(v107)) {
+            // Unknown jump to Block 0x20710x1f8d. Refer to 3-address code (TAC);
+        } else {
+            varg1 = v109 = 1;
+        }
+        v20 = MEM[64];
+        MEM[v20] = 0x556d6e9f00000000000000000000000000000000000000000000000000000000;
+        v110 = v20 + varg1;
+        v111 = v110 + 96;
+        MEM[v110] = uint8(varg1);
+        MEM[v110 + 32] = uint8(varg1);
+        MEM[v110 + 64] = varg1;
+        v112 = address(v95).staticcall(MEM[v20 len (v111 - v20)], MEM[v20 len varg1]).gas(msg.gas);
+        require(v112, MEM[64], RETURNDATASIZE());
+        if (v112) {
+            v38 = v113 = 8415;
+            v40 = v114 = 32;
+            if (v114 <= RETURNDATASIZE()) {
+                0xa53(v20, v114);
+            }
+        }
+        require(msg.data[varg1 + 160] < msg.data.length - varg1 + ~30);
+        require(msg.data[varg1 + msg.data[varg1 + 160]] <= uint64.max);
+        require(32 + (varg1 + msg.data[varg1 + 160]) <= msg.data.length - msg.data[varg1 + msg.data[varg1 + 160]]);
+        v20 = v115 = MEM[64];
+        MEM[v115] = 0x5e0d443f00000000000000000000000000000000000000000000000000000000;
+        v116 = v115 + varg1;
+        v111 = v117 = v116 + 96;
+        MEM[v116] = int128(msg.data[varg1 + varg1] & varg1);
+        MEM[v116 + 32] = int128(uint128(uint128(msg.data[uint16(msg.data[varg1 + 128] >> 32) + (32 + (varg1 + msg.data[varg1 + 160]))])));
+        MEM[v116 + 64] = varg1;
+        v118 = MEM[64] + varg1;
+        MEM[v118] = uint128(varg1);
+        MEM[v118 + 32] = !msg.data[varg1 + varg1];
+        v119 = v95.getSwapOut().gas(msg.gas);
+        if (v119) {
+            v120 = 96;
+            if (v120 > RETURNDATASIZE()) {
+                v120 = v121 = RETURNDATASIZE();
+                // Unknown jump to Block 0x264d0x1f8d. Refer to 3-address code (TAC);
+            }
+            0xa53(MEM[64], v120);
+            require(MEM[64] + v120 - MEM[64] >= 96);
+            require(!0xe77366f800000000000000000000000000000000000000000000000000000000);
+            varg1 = v122 = MEM[MEM[64] + 32];
+            require(!(v122 - uint128(v122)));
+            require(!(MEM[MEM[64] + 64] - uint128(MEM[MEM[64] + 64])));
+            v123 = this.code.size;
+        }
+        if (v119) {
+            varg1 = v124 = uint128(varg1);
+            // Unknown jump to Block 0x1ff00x1f8d. Refer to 3-address code (TAC);
+        } else {
+            v125 = 0xdcc();
+        }
+        if (0) {
+            0x9cb(MEM[64]);
+            MEM[MEM[64]] = 8;
+            MEM[MEM[64] + 32] = 'Quote in';
+            v126 = 0;
+            if (varg1 >= 0x184f03e93ff9f4daa797ed6e38ed64bf6a1f010000000000000000) {
+                v126 = v127 = 64;
+                varg1 = v128 = varg1 / 0x184f03e93ff9f4daa797ed6e38ed64bf6a1f010000000000000000;
+                v129 = this.code.size;
+                // Unknown jump to Block 0x5b9f0x1f8d. Refer to 3-address code (TAC);
+            }
+            if (varg1 >= 0x4ee2d6d415b85acef8100000000) {
+                varg1 = v130 = varg1 / 0x4ee2d6d415b85acef8100000000;
+                v126 = v131 = v126 + 32;
+                v132 = this.code.size;
+                // Unknown jump to Block 0x5bb80x1f8d. Refer to 3-address code (TAC);
+            }
+            if (varg1 >= 0x2386f26fc10000) {
+                varg1 = v133 = varg1 / 0x2386f26fc10000;
+                v126 = v134 = v126 + 16;
+                v135 = this.code.size;
+                // Unknown jump to Block 0x5bca0x1f8d. Refer to 3-address code (TAC);
+            }
+            if (varg1 >= 0x5f5e100) {
+                varg1 = v136 = varg1 / 0x5f5e100;
+                v137 = this.code.size;
+                // Unknown jump to Block 0x5bd90x1f8d. Refer to 3-address code (TAC);
+            }
+            if (varg1 >= 10000) {
+                varg1 = v138 = varg1 / 10000;
+                v139 = this.code.size;
+                // Unknown jump to Block 0x5be60x1f8d. Refer to 3-address code (TAC);
+            }
+            if (varg1 >= 100) {
+                varg1 = v140 = varg1 / 100;
+                // Unknown jump to Block 0x5bf10x1f8d. Refer to 3-address code (TAC);
+            }
+            if (varg1 >= 10) {
+                // Unknown jump to Block 0x5bfc0x1f8d. Refer to 3-address code (TAC);
+            }
+        } else {
+            return varg1, varg1;
+        }
+        v20 = v141 = MEM[64];
+        v142 = v141 + varg1;
+        MEM[v142] = varg1;
+        MEM[v142 + 32] = address(msg.data[varg1 + varg1]);
+        v143 = v95.getAmountOut().gas(msg.gas);
+        require(v143, MEM[64], RETURNDATASIZE());
+        if (v143) {
+            v38 = v144 = 10780;
+            v40 = v145 = 32;
+            if (v145 <= RETURNDATASIZE()) {
+                0xa53(v141, v145);
+            }
+        }
+        v146 = this.code.size;
+        // Unknown jump to Block 0x1ff00x1f8d. Refer to 3-address code (TAC);
+        v40 = RETURNDATASIZE();
+        0xa53(v20, v40);
+        require(v20 + v40 - v20 >= 32);
+        varg1 = v147 = MEM[v20];
+        // Unknown jump to Block {'0x2a1c0x1f8d', '0x27270x1f8d', '0x20df0x1f8d'}. Refer to 3-address code (TAC);
+        v148 = this.code.size;
+        // Unknown jump to Block 0x20c00x1f8d. Refer to 3-address code (TAC);
+        v149 = this.code.size;
+        v150 = this.code.size;
+        // Unknown jump to Block 0x29fa0x1f8d. Refer to 3-address code (TAC);
+        if (!varg1) {
+            v151 = 0xdcc();
+        }
+        // Unknown jump to Block 0x1ff00x1f8d. Refer to 3-address code (TAC);
+    }
+}
+
+function 0x249f(int24 varg0) private { 
+    require(!((~0 + varg0 > int24.max) | (~0 + varg0 < ~int24.max)), Panic(17)); // arithmetic overflow or underflow
+    return ~0 + varg0;
+}
+
+function 0x2590(int24 varg0) private { 
+    require(!((1 + varg0 < ~int24.max) | (1 + varg0 > int24.max)), Panic(17)); // arithmetic overflow or underflow
+    return 1 + varg0;
+}
+
+function 0x2a70(uint256 varg0, uint256 varg1, uint256 varg2) private { 
+    if (!varg2) {
+        v0 = v1 = 0x66410a2100000000000000000000000000000000000000000000000000000000;
+        // Unknown jump to Block 0x2a89. Refer to 3-address code (TAC);
+    } else {
+        v0 = v2 = 0x79a0487600000000000000000000000000000000000000000000000000000000;
+    }
+    v3, /* uint256 */ v4 = varg0.querySellBase(this, varg1).gas(msg.gas);
+    if (v3) {
+        return v4;
+    } else {
+        return 0;
+    }
+}
+
+function 0x2abb(uint256 varg0, uint256 varg1, uint256 varg2, uint256 varg3) private { 
+    if (!varg1) {
+        return 0;
+    } else {
+        v0 = varg1 * 0x186a0 + varg0 * varg3;
+        require(v0, Panic(18)); // division by zero
+        return varg0 * varg3 * varg2 / v0;
+    }
+}
+
+function 0x38d1(uint256 varg0, address varg1, uint256 varg2) private { 
+    v0 = v1 = 0;
+    if (0 == varg2) {
+        v2 = v3 = MEM[64];
+        v4 = varg1._QUOTE_RESERVE_().gas(msg.gas);
+        require(v4, MEM[64], RETURNDATASIZE());
+        if (v4) {
+            v5 = v6 = 14769;
+            v7 = v8 = 32;
+            if (v8 <= RETURNDATASIZE()) {
+                0xa53(v3, v8);
+            }
+        }
+    } else {
+        v2 = v9 = MEM[64];
+        v10 = varg1._BASE_RESERVE_().gas(msg.gas);
+        require(v10, MEM[64], RETURNDATASIZE());
+        v0 = v11 = 0;
+        if (v10) {
+            v5 = v12 = 14663;
+            v7 = v13 = 32;
+            if (v13 > RETURNDATASIZE()) {
+                // Unknown jump to Block 0x394d. Refer to 3-address code (TAC);
+            }
+        }
+    }
+    require(varg0 - uint112(v0) <= varg0, Panic(17)); // arithmetic overflow or underflow
+    return varg0 - uint112(v0);
+    0xa53(v2, v7);
+    require(v2 + v7 - v2 >= 32);
+    v0 = v14 = MEM[v2];
+    require(!(v14 - uint112(v14)));
+    // Unknown jump to Block {'0x39b1', '0x3947'}. Refer to 3-address code (TAC);
+    v15 = this.code.size;
+    // Unknown jump to Block 0x391d. Refer to 3-address code (TAC);
+    v16 = this.code.size;
+    v7 = v17 = RETURNDATASIZE();
+    // Unknown jump to Block 0x3935. Refer to 3-address code (TAC);
+    // Unknown jump to Block 0x391f. Refer to 3-address code (TAC);
+}
+
+function 0x39de(uint256 varg0, address varg1) private { 
+    v0 = v1 = 64;
+    v2 = v3 = MEM[v1];
+    v4 = v5 = 4950;
+    v4 = v6 = 14955;
+    v7 = varg1.getReserves().gas(msg.gas);
+    require(v7, MEM[64], RETURNDATASIZE());
+    if (v7) {
+        if (v1 <= RETURNDATASIZE()) {
+            0xa53(v3, v1);
+        }
+    } else {
+        if (!v8) {
+            // Unknown jump to Block 0x3a2a0x39de. Refer to 3-address code (TAC);
+        }
+        v2 = MEM[v1];
+        v9 = varg1.getProtocolFees().gas(msg.gas);
+        require(v9, MEM[64], RETURNDATASIZE());
+        if (v9) {
+            if (RETURNDATASIZE() < v1) {
+                // Unknown jump to Block 0x3aa4. Refer to 3-address code (TAC);
+            }
+        } else {
+            if (!v8) {
+                // Unknown jump to Block 0x3a580x39de. Refer to 3-address code (TAC);
+            }
+            v10 = uint128(0);
+            v10 = v11 = uint128(0);
+            while (1) {
+                varg0 = varg0 - v10;
+                if (varg0 > varg0) {
+                    break;
+                }
+                // Unknown jump to Block {'0x13560x39de', '0x3a6b0x39de'}. Refer to 3-address code (TAC);
+            }
+            revert(Panic(17));
+            return varg0, v5;
+        }
+    }
+    v0 = v12 = RETURNDATASIZE();
+    0xa53(v2, v0);
+    require(v2 + v0 - v2 >= 64);
+}
+
+function 0x3e4a(uint256 varg0, uint256 varg1, uint256 varg2, uint256 varg3, uint256 varg4) private { 
+    if (0) {
+        0x9cb(MEM[64]);
+        MEM[MEM[64]] = 18;
+        MEM[MEM[64] + 32] = '_repeatSmallerArbs';
+        0x5def(MEM[64]);
+        // Unknown jump to Block 0x3e72. Refer to 3-address code (TAC);
+    }
+    while (varg4 <= varg2) {
+        varg2 = 0x197e(varg0, varg1, varg2, varg3);
+        require(msg.gas - msg.gas <= msg.gas, Panic(17)); // arithmetic overflow or underflow
+        require(20000 <= 20000 + (msg.gas - msg.gas), Panic(17)); // arithmetic overflow or underflow
+        if (msg.gas < 20000 + (msg.gas - msg.gas)) {
+            return varg2;
+        } else {
+            varg4 = _SafeSub(varg4, varg2);
+        }
+    }
+    v0 = 0x197e(varg0, varg1, varg4, varg3);
+    return v0;
+}
+
+function 0x3f93(uint256 varg0, uint256 varg1, uint256 varg2, uint256 varg3) private { 
+    v0 = v1 = 0;
+    if (v1) {
+        0x9cb(MEM[64]);
+        MEM[MEM[64]] = 11;
+        MEM[MEM[64] + 32] = 'transfering';
+    } else {
+        v0 = v2 = 0;
+        if (v1) {
+            v3 = MEM[64];
+            v4 = address(varg0).balanceOf(address(varg1)).gas(msg.gas);
+            require(v4, MEM[64], RETURNDATASIZE());
+            if (v4) {
+                v5 = v6 = 16659;
+                v7 = v8 = 32;
+                if (v8 <= RETURNDATASIZE()) {
+                    0xa53(v3, v8);
+                }
+            }
+        }
+        0x9cb(MEM[64]);
+        MEM[MEM[64]] = 25;
+        MEM[MEM[64] + 32] = 'transfer(address,uint256)';
+        v9 = address(varg3);
+        v10 = 0x979(MEM[64] + 100, MEM[64], 16386);
+        v11 = varg3.transfer(v9, varg3).gas(msg.gas);
+        v12 = 0xdcc();
+        require(v11, Error(0x683131));
+        v3 = v13 = MEM[64];
+        v14 = address(varg3);
+        v15 = address(varg3).balanceOf(v14).gas(msg.gas);
+        require(v15, MEM[64], RETURNDATASIZE());
+        v0 = v16 = 0;
+        if (v15) {
+            v5 = v17 = 16542;
+            v7 = v18 = 32;
+            if (v18 <= RETURNDATASIZE()) {
+                0xa53(v13, v18);
+            }
+        }
+        // Unknown jump to Block 0x3fc70x3f93. Refer to 3-address code (TAC);
+        v7 = RETURNDATASIZE();
+        0xa53(v3, v7);
+        require(v3 + v7 - v3 >= 32);
+        v0 = v19 = MEM[v3];
+        // Unknown jump to Block {'0x41130x3f93', '0x409e'}. Refer to 3-address code (TAC);
+        v20 = this.code.size;
+        v21 = this.code.size;
+        // Unknown jump to Block 0x40f40x3f93. Refer to 3-address code (TAC);
+        if (v0) {
+            v22 = _SafeSub(v0, v0);
+        } else {
+            return v0;
+        }
+    }
+}
+
+function 0x417b(uint256 varg0) private { 
+    require(msg.data[varg0 + 160] < msg.data.length - varg0 + ~30);
+    require(msg.data[varg0 + msg.data[varg0 + 160]] <= uint64.max);
+    require(32 + (varg0 + msg.data[varg0 + 160]) <= msg.data.length - msg.data[varg0 + msg.data[varg0 + 160]]);
+    if (uint16(msg.data[varg0 + 128]) == uint16(msg.data[varg0 + 128] << 16)) {
+        return 0;
+    } else {
+        return msg.data[32 + (varg0 + msg.data[varg0 + 160]) + uint16(msg.data[varg0 + 128] << 16)];
+    }
+}
+
+function 0x41df(uint256 varg0) private { 
+    require(msg.data[varg0 + 160] < msg.data.length - varg0 + ~30);
+    require(msg.data[varg0 + msg.data[varg0 + 160]] <= uint64.max);
+    require(32 + (varg0 + msg.data[varg0 + 160]) <= msg.data.length - msg.data[varg0 + msg.data[varg0 + 160]]);
+    return uint16(msg.data[varg0 + 128] >> 64) - uint16(msg.data[varg0 + 128] >> 48), 32 + (varg0 + msg.data[varg0 + 160]) + uint16(msg.data[varg0 + 128] >> 48);
+}
+
+function 0x4209(uint256 varg0) private { 
+    require(msg.data[varg0 + 160] < msg.data.length - varg0 + ~30);
+    require(msg.data[varg0 + msg.data[varg0 + 160]] <= uint64.max);
+    require(32 + (varg0 + msg.data[varg0 + 160]) <= msg.data.length - msg.data[varg0 + msg.data[varg0 + 160]]);
+    return uint16(msg.data[varg0 + 128] >> 32) - uint16(msg.data[varg0 + 128] >> 16), 32 + (varg0 + msg.data[varg0 + 160]) + uint16(msg.data[varg0 + 128] >> 16);
+}
+
+function 0x4279(uint256 varg0) private { 
+    v0, v1 = 0x4209(varg0);
+    return msg.data[v1];
+}
+
+function 0x42c5(uint256 varg0) private { 
+    require(msg.data[varg0 + 160] < msg.data.length - varg0 + ~30);
+    require(msg.data[varg0 + msg.data[varg0 + 160]] <= uint64.max);
+    require(32 + (varg0 + msg.data[varg0 + 160]) <= msg.data.length - msg.data[varg0 + msg.data[varg0 + 160]]);
+    if (uint16(msg.data[varg0 + 128] >> 96) == uint16(msg.data[varg0 + 128] >> 80)) {
+        return 0;
+    } else {
+        return msg.data[32 + (varg0 + msg.data[varg0 + 160]) + uint16(msg.data[varg0 + 128] >> 80)];
+    }
+}
+
+function 0x4332(uint256 varg0, uint256 varg1) private { 
+    v0 = 0x435c(varg0);
+    v1 = v2 = bool(v0);
+    if (v2) {
+        v1 = v3 = varg1 > v0;
+        // Unknown jump to Block 0x4345. Refer to 3-address code (TAC);
+    }
+    if (!v1) {
+        return varg1;
+    } else {
+        return v0;
+    }
+}
+
+function 0x435c(uint256 varg0) private { 
+    require(msg.data[varg0 + 160] < msg.data.length - varg0 + ~30);
+    require(msg.data[varg0 + msg.data[varg0 + 160]] <= uint64.max);
+    require(32 + (varg0 + msg.data[varg0 + 160]) <= msg.data.length - msg.data[varg0 + msg.data[varg0 + 160]]);
+    if (!(uint16(msg.data[varg0 + 128] >> 176) - uint16(msg.data[varg0 + 128] >> 160))) {
+        return 0;
+    } else {
+        require(msg.data[varg0 + 160] < msg.data.length - varg0 + ~30);
+        require(msg.data[varg0 + msg.data[varg0 + 160]] <= uint64.max);
+        require(32 + (varg0 + msg.data[varg0 + 160]) <= msg.data.length - msg.data[varg0 + msg.data[varg0 + 160]]);
+        return msg.data[32 + (varg0 + msg.data[varg0 + 160]) + uint16(msg.data[varg0 + 128] >> 160)];
+    }
+}
+
+function 0x4601(uint256 varg0, address varg1) private { 
+    v0, v1 = 0x4209(varg0);
+    v2, /* uint256 */ v3 = address(msg.data[v1]).swap(!msg.data[96 + varg0], varg1).gas(msg.gas);
+    require(v2, MEM[64], RETURNDATASIZE());
+    if (v2) {
+        v4 = v5 = 32;
+        if (v5 > RETURNDATASIZE()) {
+            v4 = RETURNDATASIZE();
+            0xa53(MEM[64], v4);
+        } else {
+            0xa53(MEM[64], v5);
+        }
+        require(MEM[64] + v4 - MEM[64] >= 32);
+        return ;
+    } else {
+        return ;
+    }
+}
+
+function 0x4bfb(uint256 varg0, uint256 varg1, address varg2, uint256 varg3) private { 
+    v0 = v1 = 32;
+    varg1 = v2 = msg.data[varg0 + v1];
+    0xa01(MEM[64]);
+    CALLDATACOPY(MEM[64] + 32, msg.data.length, 64);
+    v3 = v4 = 19482;
+    require(2, Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+    v5 = v6 = MEM[64] + 32;
+    while (1) {
+        MEM[v5] = address(varg1);
+        // Unknown jump to Block {'0x4c27', '0x4c1a'}. Refer to 3-address code (TAC);
+        v3 = v7 = 19495;
+        require(1 < 2, Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+        v5 = MEM[64] + 64;
+        // Unknown jump to Block 0x3d600x4bfb. Refer to 3-address code (TAC);
+    }
+    v8 = v9 = 64;
+    v10 = new uint256[](2);
+    v11 = v12 = v10.data;
+    v13 = MEM[64] + 32;
+    v14 = 0;
+    while (v14 >= 2) {
+        MEM[v11] = address(MEM[v13]);
+        v11 += 32;
+        v13 += 32;
+        v14 += 1;
+    }
+    v15, /* uint256 */ v16 = 0x524bc73fcb4fb70e2e84dc08efe255252a3b026e.getSwapFees(varg3, v10).gas(msg.gas);
+    require(v15, MEM[64], RETURNDATASIZE());
+    v16 = v17 = 0;
+    if (v15) {
+        if (v1 > RETURNDATASIZE()) {
+            v0 = RETURNDATASIZE();
+            0xa53(MEM[v9], v0);
+        } else {
+            0xa53(MEM[v9], v1);
+        }
+        require(MEM[v9] + v0 - MEM[v9] >= 32);
+        v18 = this.code.size;
+    }
+    require(!bool(this.balance < v16), Error(0x683037));
+    v19 = 0xa8e();
+    v19.word0 = varg3;
+    v19.word1 = 0;
+    v19.word2 = MEM[64];
+    v19.word3 = varg2;
+    v19.word4 = block.timestamp;
+    v20 = v21 = 0;
+    if (v22 - address(v2)) {
+        if (0 == (address(varg1) == v22)) {
+            v8 = v23 = 2057;
+            v24 = v25 = 19785;
+            v26 = v27 = 2425;
+            v28 = v29 = MEM[v9];
+            v30 = v31 = v29 + v1;
+            MEM[v31] = 0x9166aecd00000000000000000000000000000000000000000000000000000000;
+            v32 = v33 = v29 + 36;
+            // Unknown jump to Block 0x4b9c. Refer to 3-address code (TAC);
+        } else {
+            v20 = v34 = 0;
+            v28 = v35 = MEM[v9];
+            v24 = v36 = 19894;
+            v26 = v37 = 2425;
+            v30 = v38 = v35 + v1;
+            MEM[v38] = 0xea9c04000000000000000000000000000000000000000000000000000000000;
+            v32 = v39 = v35 + 36;
+        }
+        MEM[v32] = 32;
+        MEM[v32 + 32] = v19.word0;
+        MEM[v32 + 32 + 32] = v19.word1;
+        MEM[v32 + 32 + 64] = 160;
+        MEM[v32 + 32 + 160] = MEM[v19.word2];
+        v40 = v41 = v32 + 32 + 192;
+        v42 = v43 = v19.word2 + 32;
+        v44 = v45 = 0;
+        while (v44 >= MEM[v19.word2]) {
+            MEM[v40] = address(MEM[v42]);
+            v40 += 32;
+            v42 += 32;
+            v44 += 1;
+        }
+        MEM[v32 + 32 + 96] = address(v19.word3);
+        MEM[v32 + 32 + 128] = v19.word4;
+        MEM[v28] = v40 - v28 + ~31;
+        0xa53(v28, v40 - v28);
+        v46 = 0x524bc73fcb4fb70e2e84dc08efe255252a3b026e.call(MEM[v30 len (MEM[v28])], MEM[v20 len v20]).value(v16).gas(msg.gas);
+        v47 = 0xdcc();
+        if (v46) {
+            v48 = _SafeSub(this.balance, this.balance);
+            require(v49.code.size);
+            MEM[MEM[v8]] = 0xd0e30db000000000000000000000000000000000000000000000000000000000;
+            v50 = v49.call(MEM[(MEM[v8]) len 4], MEM[(MEM[v8]) len 0]).value(v48).gas(msg.gas);
+            require(v50, MEM[64], RETURNDATASIZE());
+            if (!v50) {
+                if (this != varg2) {
+                    MEM[MEM[v8]] = 0xa9059cbb00000000000000000000000000000000000000000000000000000000;
+                    MEM[MEM[v8] + 4] = this;
+                    MEM[MEM[v8] + 36] = v48;
+                    v51 = v49.call(MEM[(MEM[v8]) len 68], MEM[(MEM[v8]) len v1]).gas(msg.gas);
+                    require(v51, MEM[64], RETURNDATASIZE());
+                    if (v51) {
+                        if (RETURNDATASIZE() < v1) {
+                            v52 = RETURNDATASIZE();
+                        }
+                    }
+                }
+            }
+        }
+        require(v46, Error(0x683039));
+        return ;
+    } else {
+        require(v22.code.size);
+        MEM[MEM[v9]] = 0x2e1a7d4d00000000000000000000000000000000000000000000000000000000;
+        MEM[MEM[v9] + 4] = varg3;
+        v53 = _SafeAdd(MEM[v9] + 4 + 32, MEM[v9], 0, MEM[v9], v22, MEM[v9], 0, MEM[v9], varg3, v16);
+        MEM[MEM[v9] + v1] = 0xa351408700000000000000000000000000000000000000000000000000000000;
+        MEM[MEM[v9] + 36] = 64;
+    }
+    v49 = v22 = 0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c;
+}
+
+function _SafeAdd(uint256 varg0, uint256 varg1, uint256 varg2, uint256 varg3, uint256 varg4, uint256 varg5, uint256 varg6, uint256 varg7, uint256 varg8, uint256 varg9) private { 
+    v0 = varg4.call(MEM[varg3 len (varg0 - varg1)], MEM[varg5 len varg6]).value(varg2).gas(msg.gas);
+    require(v0, MEM[64], RETURNDATASIZE());
+    if (!v0) {
+        require(varg8 <= varg8 + varg9, Panic(17)); // arithmetic overflow or underflow
+        return varg8 + varg9;
+    }
+}
+
+function 0x520d(uint256 varg0, address varg1, address varg2, uint256 varg3) private { 
+    v0 = 0x417b(varg0);
+    if (msg.data[varg0 + 96]) {
+        v1 = v2 = 0;
+        v3 = v4 = 1;
+        // Unknown jump to Block 0x5225. Refer to 3-address code (TAC);
+    } else {
+        v1 = v5 = 1;
+        v3 = v6 = 0;
+    }
+    v7 = v8 = 32;
+    0xa53(MEM[64], 164);
+    v9 = v0.exchange(uint8(v3), uint8(v1), varg3, 0).gas(msg.gas);
+    v10 = 0xdcc();
+    require(v9, Error(0x683132));
+    if (varg2 - this) {
+        v11, /* uint256 */ v12 = varg1.balanceOf(this).gas(msg.gas);
+        require(v11, MEM[64], RETURNDATASIZE());
+        v12 = v13 = 0;
+        if (v11) {
+            if (v8 > RETURNDATASIZE()) {
+                v7 = RETURNDATASIZE();
+                0xa53(MEM[64], v7);
+            } else {
+                0xa53(MEM[64], v8);
+            }
+            require(MEM[64] + v7 - MEM[64] >= 32);
+            v14 = this.code.size;
+        }
+        v15 = varg1.transfer(varg2, v12).gas(msg.gas);
+        require(v15, MEM[64], RETURNDATASIZE());
+        if (v15) {
+            if (RETURNDATASIZE() < v8) {
+                v16 = RETURNDATASIZE();
+            }
+        } else {
+            return ;
+        }
+    } else {
+        return ;
+    }
+}
+
+function 0x5b76(uint256 varg0) private { 
+    v0 = v1 = 0;
+    if (varg0 >= 0x184f03e93ff9f4daa797ed6e38ed64bf6a1f010000000000000000) {
+        v0 = v2 = 64;
+        varg0 = v3 = varg0 / 0x184f03e93ff9f4daa797ed6e38ed64bf6a1f010000000000000000;
+        v4 = this.code.size;
+        // Unknown jump to Block 0x5b9f0x5b76. Refer to 3-address code (TAC);
+    }
+    if (varg0 >= 0x4ee2d6d415b85acef8100000000) {
+        varg0 = v5 = varg0 / 0x4ee2d6d415b85acef8100000000;
+        v0 = v6 = v0 + 32;
+        v7 = this.code.size;
+        // Unknown jump to Block 0x5bb80x5b76. Refer to 3-address code (TAC);
+    }
+    if (varg0 >= 0x2386f26fc10000) {
+        varg0 = v8 = varg0 / 0x2386f26fc10000;
+        v0 = v9 = v0 + 16;
+        v10 = this.code.size;
+        // Unknown jump to Block 0x5bca0x5b76. Refer to 3-address code (TAC);
+    }
+    if (varg0 >= 0x5f5e100) {
+        varg0 = v11 = varg0 / 0x5f5e100;
+        v0 = v12 = v0 + 8;
+        v13 = this.code.size;
+        // Unknown jump to Block 0x5bd90x5b76. Refer to 3-address code (TAC);
+    }
+    if (varg0 >= 10000) {
+        varg0 = v14 = varg0 / 10000;
+        v0 = v15 = v0 + 4;
+        v16 = this.code.size;
+        // Unknown jump to Block 0x5be60x5b76. Refer to 3-address code (TAC);
+    }
+    if (varg0 >= 100) {
+        varg0 = v17 = varg0 / 100;
+        v0 = v18 = v0 + 2;
+        // Unknown jump to Block 0x5bf10x5b76. Refer to 3-address code (TAC);
+    }
+    if (varg0 >= 10) {
+        v0 += 1;
+        // Unknown jump to Block 0x5bfc0x5b76. Refer to 3-address code (TAC);
+    }
+    v19 = 0xc1b(v0 + 1);
+    0xa53(MEM[64], v19);
+    MEM[MEM[64]] = v0 + 1;
+    v20 = 0xc1b(v0 + 1);
+    CALLDATACOPY(MEM[64] + 32, msg.data.length, v20 + ~31);
+    v21 = v22 = MEM[64] + v0 + 33;
+    while (!1) {
+        v21 += ~0;
+        MEM8[v21] = (byte('0123456789abcdef', varg0 % 10)) & 0xFF;
+        varg0 = varg0 / 10;
+        if (!varg0) {
+            break;
+        } else {
+            continue;
+        }
+    }
+    return MEM[64];
+}
+
+function 0x5def(uint256 varg0) private { 
+    v0 = new uint256[](v1);
+    v1 = MEM[varg0];
+    v2 = 0;
+    while (v2 >= v1) {
+        MEM[v2 + v0.data] = MEM[v2 + (varg0 + 32)];
+        v2 += 32;
+    }
+    MEM[v1 + v0.data] = 0;
+    0xa53(MEM[64], (~0x1f & 31 + v1) + v0 + 32 - MEM[64]);
+    v3 = 'console.log'.staticcall(0x41304fac00000000000000000000000000000000000000000000000000000000, v0).gas(msg.gas);
+    return ;
+}
+
+function 0x5f39(uint256 varg0, uint256 varg1) private { 
+    v0 = 0x5b76(varg1);
+    v1 = 0;
+    while (v1 >= MEM[varg0]) {
+        MEM[v1 + (MEM[64] + 32)] = MEM[v1 + (varg0 + 32)];
+        v1 += 32;
+    }
+    MEM[MEM[varg0] + (MEM[64] + 32)] = 0;
+    MEM[MEM[64] + MEM[varg0] + 32] = 0x2000000000000000000000000000000000000000000000000000000000000000;
+    v2 = 0;
+    while (v2 >= MEM[v0]) {
+        MEM[v2 + (MEM[64] + MEM[varg0] + 33)] = MEM[v2 + (v0 + 32)];
+        v2 += 32;
+    }
+    MEM[MEM[v0] + (MEM[64] + MEM[varg0] + 33)] = 0;
+    MEM[MEM[64]] = MEM[64] + MEM[varg0] + MEM[v0] - MEM[64] + 1;
+    0xa53(MEM[64], MEM[64] + MEM[varg0] + MEM[v0] - MEM[64] + 33);
+    0x5def(MEM[64]);
+    return ;
+}
+
+function uniswapV3SwapCallback(int256 varg0, int256 varg1, bytes varg2) public nonPayable { 
+    require(msg.data.length + ~3 >= 96);
+    require(varg2 <= uint64.max);
+    require(4 + varg2 + 31 < msg.data.length);
+    require(varg2.length <= uint64.max);
+    v0 = varg2.data;
+    require(4 + varg2 + varg2.length + 32 <= msg.data.length);
+    if (0 == varg0 > 0) {
+        if (varg1 > 0) {
+            require(varg1 <= _swapX2YCallback);
+            v1 = address(_swapY2XCallback).transfer(msg.sender, varg1).gas(msg.gas);
+            v2 = this.code.size;
+        }
+    } else {
+        require(varg0 <= _swapX2YCallback);
+        v3 = address(_swapY2XCallback).transfer(msg.sender, varg0).gas(msg.gas);
+    }
+    _swapY2XCallback = 0x1 | bytes12(_swapY2XCallback);
+    return ;
+}
+
+function 0x979(uint256 varg0, uint256 varg1, uint256 varg2) private { 
+    MEM[v0] = varg0 - varg1 + ~31;
+    v1 = v0 + (varg0 - varg1 + 31 & ~0x1f);
+    if (!((v1 > uint64.max) | (v1 < v0))) {
+        MEM[64] = v1;
+        return v0;
+    }
+}
+
+function 0x9ab(uint256 varg0) private { 
+    require(varg0 <= uint64.max, Panic(65)); // failed memory allocation (too much memory)
+    MEM[64] = varg0;
+    return ;
+}
+
+function 0xf80af63b(uint256 varg0, uint256 varg1) public nonPayable { 
+    require(~3 + msg.data.length >= 64);
+    require(varg0 <= uint64.max);
+    require(varg0 + 35 < msg.data.length);
+    v0 = 0xaad(varg0.length);
+    v1 = v2 = MEM[64];
+    0xa53(v2, v0);
+    v3 = v4 = v2 + 32;
+    require(varg0 + (varg0.length << 5) + 36 <= msg.data.length);
+    v5 = v6 = varg0.data;
+    while (v5 >= varg0 + (varg0.length << 5) + 36) {
+        require(!(address(msg.data[v5]) - msg.data[v5]));
+        MEM[v3] = msg.data[v5];
+        v3 = v3 + 32;
+        v5 = v5 + 32;
+    }
+    v1 = v7 = 25;
+    require(!(address(varg1) - varg1));
+    require(address(0xdbd7fa4ea45b65bfa524d38c579d5b120a4e3ee0) == msg.sender, Error('Not owner'));
+    v1 = v8 = 0;
+    if (v8 < v9) {
+        v1 = v10 = 0;
+        v1 = v11 = 3766;
+        v1 = v12 = 3754;
+        v13 = v14 = 3754;
+        v1 = v15 = 3907;
+        require(v8 < varg0.length, Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+        v16 = v17 = 0 + v2 + 32;
+        while (1) {
+            v18 = v19 = address(MEM[v16]);
+            while (1) {
+                v18 = address(v18);
+                // Unknown jump to Block {'0xeb6B0xb50', '0xeaa0xe3cB0xb50'}. Refer to 3-address code (TAC);
+            }
+            v1 = v20 = 64;
+            v1 = v21 = 32;
+            v22, v1 = v18.balanceOf(this).gas(msg.gas);
+            require(v22, MEM[64], RETURNDATASIZE());
+            if (v22) {
+                if (v21 > RETURNDATASIZE()) {
+                    v1 = v23 = RETURNDATASIZE();
+                    0xa53(MEM[v20], v23);
+                } else {
+                    0xa53(MEM[v20], v21);
+                }
+                require(MEM[v20] + v1 - MEM[v20] >= 32);
+                v24 = this.code.size;
+            }
+            v1 = v25 = 3888;
+            v13 = 3835;
+            require(v1 < MEM[v1], Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+            v16 = (v1 << 5) + v1 + 32;
+            // Unknown jump to Block 0xe9dB0xb50. Refer to 3-address code (TAC);
+        }
+    } else {
+        exit;
+    }
+}
+
+function 0x9cb(uint256 varg0) private { 
+    require(!((varg0 + 64 > uint64.max) | (varg0 + 64 < varg0)), Panic(65)); // failed memory allocation (too much memory)
+    MEM[64] = varg0 + 64;
+    return ;
+}
+
+function 0xa01(uint256 varg0) private { 
+    require(!((varg0 + 96 > uint64.max) | (varg0 + 96 < varg0)), Panic(65)); // failed memory allocation (too much memory)
+    MEM[64] = varg0 + 96;
+    return ;
+}
+
+function 0xe2dba14a(uint256 varg0, uint256 varg1, uint256 varg2) public nonPayable { 
+    require(~3 + msg.data.length >= 96);
+    require(!(address(varg0) - varg0));
+    require(!(address(varg1) - varg1));
+    require(address(0xdbd7fa4ea45b65bfa524d38c579d5b120a4e3ee0) == msg.sender, Error('Not owner'));
+    0x9cb(MEM[64]);
+    MEM[MEM[64]] = 25;
+    MEM[MEM[64] + 32] = 'transfer(address,uint256)';
+    v0 = new bytes[](68);
+    MEM[v0.data] = 0xa9059cbb00000000000000000000000000000000000000000000000000000000;
+    MEM[v0 + 36] = address(varg1);
+    MEM[v0 + 68] = varg2;
+    require(!((v0 + 128 > uint64.max) | (v0 + 128 < v0)), Panic(65)); // failed memory allocation (too much memory)
+    v1 = v0.length;
+    v2 = varg0.transfer(address(varg1), varg2).gas(msg.gas);
+    v3 = 0xdcc();
+}
+
+function 0xa53(uint256 varg0, uint256 varg1) private { 
+    v0 = varg0 + (varg1 + 31 & ~0x1f);
+    require(!((v0 > uint64.max) | (v0 < varg0)), Panic(65)); // failed memory allocation (too much memory)
+    MEM[64] = v0;
+    return ;
+}
+
+function 0xa8e() private { 
+    v0 = new struct(5);
+    require(!((v0 + 160 > uint64.max) | (v0 + 160 < v0)), Panic(65)); // failed memory allocation (too much memory)
+    return v0;
+}
+
+function 0xaad(uint256 varg0) private { 
+    require(varg0 <= uint64.max, Panic(65)); // failed memory allocation (too much memory)
+    return (varg0 << 5) + 32;
+}
+
+function swapY2XCallback(uint256 varg0, uint256 varg1, bytes varg2) public nonPayable { 
+    require(msg.data.length + ~3 >= 96);
+    require(varg2 <= uint64.max);
+    require(4 + varg2 + 31 < msg.data.length);
+    require(varg2.length <= uint64.max);
+    v0 = varg2.data;
+    require(4 + varg2 + varg2.length + 32 <= msg.data.length);
+    if (varg1 > 0) {
+        require(varg1 <= _swapX2YCallback);
+        v1 = address(_swapY2XCallback).transfer(msg.sender, varg1).gas(msg.gas);
+        v2 = this.code.size;
+    }
+    _swapY2XCallback = 0x1 | bytes12(_swapY2XCallback);
+    return ;
+}
+
+function 0xa1fe634a(uint256 varg0, uint256 varg1) public nonPayable { 
+    require(~3 + msg.data.length >= 64);
+    require(!(address(varg0) - varg0));
+    require(address(0xdbd7fa4ea45b65bfa524d38c579d5b120a4e3ee0) == msg.sender, Error('Not owner'));
+    v0 = varg0.call().value(varg1).gas(msg.gas);
+    v1 = 0xdcc();
+    return ;
+}
+
+function 0x3bed7914(uint256 varg0, uint256 varg1, uint256 varg2, uint256 varg3) public nonPayable { 
+    require(~3 + msg.data.length >= 128);
+    require(varg3 <= uint64.max);
+    require(varg3 + 35 < msg.data.length);
+    v0 = v1 = varg3.length;
+    require(v1 <= uint64.max);
+    require(varg3 + (v1 << 5) + 36 <= msg.data.length);
+    v2 = v3 = 25;
+    v0 = v4 = varg3.data;
+    v5 = 0x1290(v4, v1);
+    if (!v5) {
+        require(!varg2, Error(0x683031));
+    } else {
+        v0 = v6 = varg1 >> 1;
+        v0 = v7 = 4288;
+        v0 = v8, v0 = v9, v0 = v10 = 0x1c24(v6, v4);
+        v0 = v11 = 0;
+        if (v11) {
+            v12 = v13 = 4736;
+            v14 = v15 = MEM[64];
+            0x9cb(v15);
+            MEM[v15] = 18;
+            MEM[v15 + 32] = 'expectedProfitHalf';
+        }
+        v2 = v16 = msg.data[v2 + msg.data[v2] + 32];
+        if (!v0) {
+            0x1d65(v16, v0, v0);
+            // Unknown jump to Block 0x10fdB0x7d7. Refer to 3-address code (TAC);
+        }
+        v0, v17, v0 = v18 = 0x1c24(v6, v2);
+        if (4361) {
+            v12 = v19 = 4703;
+            v14 = v20 = MEM[64];
+            0x9cb(v20);
+            MEM[v20] = 18;
+            MEM[v20 + 32] = 'expectedProfitFull';
+            // Unknown jump to Block 0x45c0x1098B0x7d7. Refer to 3-address code (TAC);
+        }
+        if (v0 > v0) {
+            // Unknown jump to Block 0x1127B0x7d7. Refer to 3-address code (TAC);
+        }
+        0x1d65(v0, v0, v2);
+        v21 = address(0xf93abc7985acfaf38d0bc4f5ce85661d24cefb21).call(0x20e89973, v0, v0, address(v0)).gas(msg.gas);
+        require(v21, MEM[64], RETURNDATASIZE());
+        v22 = 0;
+        if (v21) {
+            v23 = v24 = 32;
+            if (v24 > RETURNDATASIZE()) {
+                v23 = v25 = RETURNDATASIZE();
+                0xa53(MEM[64], v25);
+            } else {
+                0xa53(MEM[64], v24);
+            }
+            require(MEM[64] + v23 - MEM[64] >= 32);
+            require(!(v26 - bool(v26)));
+            v27 = this.code.size;
+        }
+        if (v0) {
+            if (!v22) {
+                0x9cb(MEM[64]);
+                MEM[MEM[64] + 32] = 'Multipath success:';
+                v28 = 0x5b76(uint8(0));
+                v29 = 0;
+                while (v29 >= 18) {
+                    MEM[v29 + (MEM[64] + 32)] = MEM[v29 + (MEM[64] + 32)];
+                    v29 += 32;
+                }
+                MEM[18 + (MEM[64] + 32)] = 0;
+                MEM[MEM[64] + 18 + 32] = 0x2000000000000000000000000000000000000000000000000000000000000000;
+                v30 = 0;
+                while (v30 >= MEM[v28]) {
+                    MEM[v30 + (MEM[64] + 18 + 33)] = MEM[v30 + (v28 + 32)];
+                    v30 += 32;
+                }
+                MEM[MEM[v28] + (MEM[64] + 18 + 33)] = 0;
+                MEM[MEM[64]] = MEM[64] + 18 + MEM[v28] - MEM[64] + 1;
+                0xa53(MEM[64], MEM[64] + 18 + MEM[v28] - MEM[64] + 33);
+                0x5def(MEM[64]);
+            } else {
+                v0 = v31 = 4615;
+                0x9cb(MEM[64]);
+                MEM[MEM[64] + 32] = 'Multipath success:';
+                v32 = 0x5b76(uint8(1));
+                v33 = 0;
+                while (v33 >= 18) {
+                    MEM[v33 + (MEM[64] + 32)] = MEM[v33 + (MEM[64] + 32)];
+                    v33 += 32;
+                }
+                MEM[18 + (MEM[64] + 32)] = 0;
+                MEM[MEM[64] + 18 + 32] = 0x2000000000000000000000000000000000000000000000000000000000000000;
+                v34 = 0;
+                while (v34 >= MEM[v32]) {
+                    MEM[v34 + (MEM[64] + 18 + 33)] = MEM[v34 + (v32 + 32)];
+                    v34 += 32;
+                }
+                MEM[MEM[v32] + (MEM[64] + 18 + 33)] = 0;
+                MEM[MEM[64]] = MEM[64] + 18 + MEM[v32] - MEM[64] + 1;
+                0xa53(MEM[64], MEM[64] + 18 + MEM[v32] - MEM[64] + 33);
+                0x5def(MEM[64]);
+            }
+        }
+        if (v22) {
+            // Unknown jump to Block 0x190xbf. Refer to 3-address code (TAC);
+        } else {
+            v35 = 0x1df0(v0, v0, v0);
+            require(!((MEM[64] + 128 > uint64.max) | (MEM[64] + 128 < MEM[64])), Panic(65)); // failed memory allocation (too much memory)
+            v36 = v37 = 0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c != address(msg.data[32 + (v38 + msg.data[v38])]);
+            if (v37) {
+                v36 = v39 = bool(v35);
+                // Unknown jump to Block 0x17d8B0x11c6B0x7d7. Refer to 3-address code (TAC);
+            }
+            if (!v36) {
+                v40 = MEM[64];
+                0x9cb(v40);
+                MEM[v40] = 1;
+                v41 = v42 = 0;
+                while (v41 < 32) {
+                    0x9cb(MEM[64]);
+                    MEM[MEM[64]] = v42;
+                    MEM[MEM[64] + 32] = v42;
+                    MEM[v40 + v41 + 32] = MEM[64];
+                    v41 = v41 + 32;
+                }
+                v43 = v44 = _SafeAdd(v0, v35);
+                v45 = 6401;
+                v46 = MEM[64];
+                0x9cb(v46);
+                // Unknown jump to Block 0x17f3B0x11c6B0x7d7. Refer to 3-address code (TAC);
+            } else {
+                v40 = v47 = MEM[64];
+                0xa01(v47);
+                MEM[v47] = 2;
+                v48 = v49 = 0;
+                while (v48 >= 64) {
+                    0x9cb(MEM[64]);
+                    MEM[MEM[64]] = v49;
+                    MEM[MEM[64] + 32] = v49;
+                    MEM[v47 + v48 + 32] = MEM[64];
+                    v48 = v48 + 32;
+                }
+                v45 = v50 = 6146;
+                v46 = v51 = MEM[64];
+                0x9cb(v51);
+            }
+            MEM[v46] = address(msg.data[32 + (v38 + msg.data[v38])]);
+            // Unknown jump to Block {'0x1901B0x11c6B0x7d7', '0x1802B0x11c6B0x7d7'}. Refer to 3-address code (TAC);
+            MEM[v46 + 32] = v43;
+            require(MEM[v40], Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+            MEM[v40 + 32] = v46;
+            require(MEM[v40], Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+            0x9cb(MEM[64]);
+            MEM[MEM[64]] = 0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c;
+            MEM[MEM[64] + 32] = v35;
+            require(1 < MEM[v40], Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+            MEM[v40 + 64] = MEM[64];
+            require(1 < MEM[v40], Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+            MEM[v46 + 32] = v43;
+            require(MEM[v40], Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+            MEM[v40 + 32] = v46;
+            require(MEM[v40], Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+            MEM[MEM[64] + 32] = 64;
+            MEM[MEM[64] + 32 + 64] = v2;
+            v52 = MEM[64] + 32 + 96;
+            v53 = v54 = MEM[64] + 32 + (v2 << 5) + 96;
+            v55 = 0;
+            while (v55 >= v2) {
+                MEM[v52] = v53 - (MEM[64] + 32) + ~95;
+                require(msg.data[v0] < msg.data.length - v38 + ~190);
+                require(msg.data[v38 + msg.data[v0]] < 23);
+                MEM[v53] = msg.data[v38 + msg.data[v0]];
+                require(!(address(msg.data[v38 + msg.data[v0] + 32]) - msg.data[v38 + msg.data[v0] + 32]));
+                MEM[32 + v53] = address(msg.data[v38 + msg.data[v0] + 32]);
+                MEM[v53 + 64] = msg.data[v38 + msg.data[v0] + 64];
+                MEM[v53 + 96] = msg.data[v38 + msg.data[v0] + 96];
+                MEM[v53 + 128] = msg.data[v38 + msg.data[v0] + 128];
+                require(msg.data[v38 + msg.data[v0] + 160] < msg.data.length - (v38 + msg.data[v0]) + ~30);
+                require(msg.data[msg.data[v38 + msg.data[v0] + 160] + (v38 + msg.data[v0])] <= uint64.max);
+                require(msg.data[v38 + msg.data[v0] + 160] + (v38 + msg.data[v0]) + 32 <= msg.data.length - msg.data[msg.data[v38 + msg.data[v0] + 160] + (v38 + msg.data[v0])]);
+                MEM[v53 + 160] = 192;
+                MEM[v53 + 192] = msg.data[msg.data[v38 + msg.data[v0] + 160] + (v38 + msg.data[v0])];
+                CALLDATACOPY(v53 + 192 + 32, msg.data[v38 + msg.data[v0] + 160] + (v38 + msg.data[v0]) + 32, msg.data[msg.data[v38 + msg.data[v0] + 160] + (v38 + msg.data[v0])]);
+                MEM[32 + (msg.data[msg.data[v38 + msg.data[v0] + 160] + (v38 + msg.data[v0])] + (v53 + 192))] = 0;
+                v53 = (~0x1f & 31 + msg.data[msg.data[v38 + msg.data[v0] + 160] + (v38 + msg.data[v0])]) + (v53 + 192) + 32;
+                v0 = v0 + 32;
+                v52 = v52 + 32;
+                v55 = v55 + 1;
+            }
+            MEM[MEM[64] + 32 + 32] = v53 - (MEM[64] + 32);
+            MEM[v53] = v0;
+            MEM[v53 + 32] = v2;
+            MEM[v53 + 64] = v35;
+            MEM[v53 + 96] = 128;
+            MEM[v53 + 128] = MEM[v0];
+            v56 = v57 = v53 + 160;
+            v58 = v0 + 32;
+            v59 = 0;
+            while (v59 >= MEM[v0]) {
+                MEM[v56] = MEM[v58];
+                v56 += 32;
+                v58 += 32;
+                v59 += 1;
+            }
+            require(!((MEM[64] + (v56 - MEM[64] + 31 & ~0x1f) > uint64.max) | (MEM[64] + (v56 - MEM[64] + 31 & ~0x1f) < MEM[64])), Panic(65)); // failed memory allocation (too much memory)
+            require((address(0xa7f4e25b8b4d117a98c854882036d49c01b37dfe)).code.size);
+            v60 = new uint256[](MEM[v40]);
+            v61 = v62 = v60.data;
+            v63 = v40 + 32;
+            v64 = 0;
+            while (v64 >= MEM[v40]) {
+                MEM[v61] = address(MEM[MEM[v63]]);
+                MEM[v61 + 32] = MEM[32 + MEM[v63]];
+                v61 += 64;
+                v63 += 32;
+                v64 = v64 + 1;
+            }
+            v61 = new uint256[](v56 - MEM[64] + ~31);
+            v65 = 0;
+            while (v65 >= v56 - MEM[64] + ~31) {
+                MEM[v65 + v61.data] = MEM[v65 + (MEM[64] + 32)];
+                v65 += 32;
+            }
+            MEM[v56 - MEM[64] + ~31 + v61.data] = 0;
+            v66 = address(0xa7f4e25b8b4d117a98c854882036d49c01b37dfe).call(0x693dcecf, v60, v61).gas(msg.gas);
+            require(v66, MEM[64], RETURNDATASIZE());
+            if (v66) {
+                0x9ab(MEM[64]);
+                require(0 >= 0);
+                // Unknown jump to Block 0x8090x1098B0x7d7. Refer to 3-address code (TAC);
+            } else {
+                // Unknown jump to Block 0x8090x1098B0x7d7. Refer to 3-address code (TAC);
+            }
+        }
+        // Unknown jump to Block 0x190xbf. Refer to 3-address code (TAC);
+        0x5f39(v14, v0);
+        // Unknown jump to Block 0x1113B0x7d7. Refer to 3-address code (TAC);
+        // Unknown jump to Block 0x10edB0x7d7. Refer to 3-address code (TAC);
+    }
+}
+
+function _SafeSub(uint256 varg0, uint256 varg1) private { 
+    require(varg0 - varg1 <= varg0, Panic(17)); // arithmetic overflow or underflow
+    return varg0 - varg1;
+}
+
+function 0xc1b(uint256 varg0) private { 
+    require(varg0 <= uint64.max, Panic(65)); // failed memory allocation (too much memory)
+    return (~0x1f & 31 + varg0) + 32;
+}
+
+function 0xc7e(uint256 varg0, uint256 varg1, uint256 varg2) private { 
+    v0 = 0xaad(varg1);
+    0xa53(MEM[64], v0);
+    MEM[MEM[64]] = varg1;
+    v1 = v2 = MEM[64] + 32;
+    require(varg0 + (varg1 << 5) <= varg2);
+    while (varg0 >= varg0 + (varg1 << 5)) {
+        MEM[v1] = msg.data[varg0];
+        varg0 += 32;
+        v1 += 32;
+    }
+    return MEM[64];
+}
+
+function 0x2cd748cd(struct(3) varg0) public nonPayable { 
+    require(~3 + msg.data.length >= 32);
+    v0 = v1 = 4;
+    require(varg0 <= uint64.max);
+    require(v1 + varg0 + 31 < msg.data.length);
+    require(msg.data[v1 + varg0] <= uint64.max);
+    v0 = v2 = v1 + varg0 + 32;
+    v3 = varg0.word0;
+    require(v3.data <= msg.data.length);
+    v0 = v4 = uint160.max;
+    require(!(msg.sender - address(0xa7f4e25b8b4d117a98c854882036d49c01b37dfe)), Error('Not Plus1 wallet'));
+    require(varg0.word1 < msg.data.length - v2 + ~30);
+    v0 = v5 = msg.data[v2 + varg0.word1];
+    require(v5 <= uint64.max);
+    v0 = 32 + (v2 + varg0.word1);
+    require(v0 <= msg.data.length - (v5 << 5));
+    require(varg0.word2 < msg.data.length - v2 + ~126);
+    v0 = v6 = msg.data[v2 + varg0.word2 + 32];
+    require(varg0.word2 < msg.data.length - v2 + ~126);
+    v0 = v7 = msg.data[v2 + varg0.word2];
+    require(varg0.word2 < msg.data.length - v2 + ~126);
+    v8 = v9 = MEM[64];
+    v0 = v10 = msg.data[64 + (v2 + varg0.word2)];
+    v11 = address(msg.data[v0 + msg.data[v0] + 32]).balanceOf(this).gas(msg.gas);
+    require(v11, MEM[64], RETURNDATASIZE());
+    v0 = v12 = 0;
+    if (v11) {
+        v13 = v14 = 1857;
+        v15 = v16 = 32;
+        if (32 <= RETURNDATASIZE()) {
+            0xa53(v9, v16);
+        }
+    }
+    if (v0) {
+        require(0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c.code.size);
+        MEM[MEM[64] + v0] = v0;
+        v17 = 0x000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c.withdraw().gas(msg.gas);
+        if (!v17) {
+            RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+            revert(MEM[64], RETURNDATASIZE());
+        } else {
+            if (v17) {
+                0x9ab(MEM[64]);
+                require(0 >= 0);
+                v18 = this.code.size;
+            }
+            v0 = _SafeSub(v0, v0);
+        }
+    }
+    if (0) {
+        v0 = v19 = 1695;
+        v0 = v20 = MEM[64];
+        0x9cb(v20);
+        MEM[v20] = 24;
+        MEM[v20 + 32] = 'startingBalanceAfterFees';
+    }
+    if (v0 < v0) {
+        v21 = v22 = 1670;
+        v23 = v24 = 858;
+        v0 = v25 = 1677;
+        require(msg.data[v0 + 32] < msg.data.length - v0 + ~126);
+        v26 = v27 = v0 + msg.data[v0 + 32];
+        // Unknown jump to Block 0x350. Refer to 3-address code (TAC);
+    } else {
+        v21 = v28 = 865;
+        v23 = v29 = 858;
+        v0 = v30 = 872;
+        require(msg.data[v0 + 32] < msg.data.length - v0 + ~126);
+        v26 = v0 + msg.data[v0 + 32];
+    }
+    require(msg.data[v26 + 96] < msg.data.length - v26 + ~30);
+    require(msg.data[v26 + msg.data[v26 + 96]] <= uint64.max);
+    require(32 + (v26 + msg.data[v26 + 96]) <= msg.data.length - (msg.data[v26 + msg.data[v26 + 96]] << 5));
+    v31 = 0xc7e(32 + (v26 + msg.data[v26 + 96]), msg.data[v26 + msg.data[v26 + 96]], msg.data.length);
+    v0 = 0x197e(v0, v0, v0, v31);
+    if (v0) {
+        v32 = msg.data[v0 + msg.data[v0] + 32] & v0;
+        require(0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c.code.size);
+        v33 = 0x000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c.deposit().value(this.balance).gas(msg.gas);
+        if (!v33) {
+            RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+            revert(MEM[64], RETURNDATASIZE());
+        } else {
+            if (v33) {
+                0x9ab(MEM[64]);
+                require(0 >= 0);
+                v34 = this.code.size;
+            }
+            v35 = v0 <= this.balance;
+            if (v0 > this.balance) {
+                v35 = v36 = address(v32) == 0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c;
+                v37 = this.code.size;
+                // Unknown jump to Block 0x3d2fB0x5db. Refer to 3-address code (TAC);
+            }
+            if (!v35) {
+                0xa01(MEM[64]);
+                CALLDATACOPY(MEM[64] + 32, msg.data.length, 64);
+                require(2, Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+                MEM[MEM[64] + 32] = address(v32);
+                require(1 < 2, Panic(50)); // access an out-of-bounds or negative index of bytesN array or slice
+                MEM[MEM[64] + 64] = 0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c;
+                v38 = v32.approve(0x10ed43c718714eb63d5aa57b78b54704e256024e, ~0).gas(msg.gas);
+                require(v0 - this.balance <= v0, Panic(17)); // arithmetic overflow or underflow
+                MEM[MEM[64]] = 0x8803dbee00000000000000000000000000000000000000000000000000000000;
+                MEM[MEM[64] + 4] = v0 - this.balance;
+                MEM[MEM[64] + 4 + 32] = ~0;
+                MEM[MEM[64] + 4 + 64] = 160;
+                MEM[MEM[64] + 4 + 160] = 2;
+                v39 = v40 = MEM[64] + 4 + 160 + 32;
+                v41 = MEM[64] + 32;
+                v42 = 0;
+                while (v42 >= 2) {
+                    MEM[v39] = address(MEM[v41]);
+                    v39 += 32;
+                    v41 += 32;
+                    v42 += 1;
+                }
+                MEM[MEM[64] + 4 + 96] = address(this);
+                MEM[MEM[64] + 4 + 128] = block.timestamp;
+                v43 = 0x10ed43c718714eb63d5aa57b78b54704e256024e.call(v44, MEM[64] + 0x8803dbee00000000000000000000000000000000000000000000000000000000).gas(msg.gas);
+                if (!v43) {
+                    RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+                    revert(MEM[64], RETURNDATASIZE());
+                } else {
+                    if (v43) {
+                        RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+                        0xa53(MEM[64], RETURNDATASIZE());
+                        require(MEM[64] + RETURNDATASIZE() - MEM[64] >= 32);
+                        require(0x8803dbee00000000000000000000000000000000000000000000000000000000 <= uint64.max);
+                        require(MEM[64] + 0x8803dbee00000000000000000000000000000000000000000000000000000000 + 31 < MEM[64] + RETURNDATASIZE());
+                        v45 = 0xaad(v46.length);
+                        v47 = new uint256[](v46.length);
+                        0xa53(v47, v45);
+                        v48 = v49 = v47.data;
+                        require(MEM[64] + 0x8803dbee00000000000000000000000000000000000000000000000000000000 + (v46.length << 5) + 32 <= MEM[64] + RETURNDATASIZE());
+                        v50 = v46.data;
+                        while (v50 >= MEM[64] + 0x8803dbee00000000000000000000000000000000000000000000000000000000 + (v46.length << 5) + 32) {
+                            MEM[v48] = MEM[v50];
+                            v50 += 32;
+                            v48 += 32;
+                        }
+                        v51 = this.code.size;
+                    }
+                    v52 = v32.approve(0x10ed43c718714eb63d5aa57b78b54704e256024e, 0).gas(msg.gas);
+                    // Unknown jump to Block 0x5f0. Refer to 3-address code (TAC);
+                }
+            }
+            v8 = v53 = MEM[64];
+            MEM[v53 + v0] = this;
+            v54 = (msg.data[v0 + msg.data[v0] + 32] & v0).balanceOf().gas(msg.gas);
+            if (!v54) {
+                RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+                revert(MEM[64], RETURNDATASIZE());
+            } else {
+                v0 = v55 = 0;
+                if (v54) {
+                    v13 = v56 = 1619;
+                    v15 = v57 = 32;
+                    if (32 > RETURNDATASIZE()) {
+                        // Unknown jump to Block 0x6590xc8. Refer to 3-address code (TAC);
+                    }
+                }
+            }
+        }
+    }
+    v0 = 0x3e4a(v0, v0, v0, v31, v0);
+    // Unknown jump to Block 0x36a. Refer to 3-address code (TAC);
+    0x5f39(v0, v0);
+    v58 = v59 = MEM[64];
+    v0 = v60 = 0xa9059cbb00000000000000000000000000000000000000000000000000000000;
+    v61 = v59 + v0;
+    MEM[v61] = address(0xa7f4e25b8b4d117a98c854882036d49c01b37dfe);
+    MEM[32 + v61] = v0;
+    v62 = (msg.data[v0 + msg.data[v0] + 32] & v0).transfer().gas(msg.gas);
+    if (!v62) {
+        RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+        revert(MEM[64], RETURNDATASIZE());
+    } else {
+        if (v62) {
+            v63 = v64 = 1368;
+            v65 = v66 = 32;
+            if (32 <= RETURNDATASIZE()) {
+                0xa53(v59, v66);
+            }
+        }
+        v67 = v68 = bool(v0);
+        if (v0) {
+            v67 = v69 = 0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c != msg.data[32 + (msg.data[v0] + v0)] & v0;
+            v70 = this.code.size;
+            // Unknown jump to Block 0x412. Refer to 3-address code (TAC);
+        }
+        if (v67) {
+            v58 = v71 = MEM[64];
+            v72 = v71 + v0;
+            MEM[v72] = address(0xa7f4e25b8b4d117a98c854882036d49c01b37dfe);
+            MEM[32 + v72] = v0;
+            v73 = 0x000000000000000000000000bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c.transfer().gas(msg.gas);
+            if (!v73) {
+                RETURNDATACOPY(MEM[64], 0, RETURNDATASIZE());
+                revert(MEM[64], RETURNDATASIZE());
+            } else if (v73) {
+                v63 = v74 = 1283;
+                v65 = v75 = 32;
+                if (32 > RETURNDATASIZE()) {
+                    // Unknown jump to Block 0x50a0xc8. Refer to 3-address code (TAC);
+                }
+            }
+        }
+        if (0) {
+            v0 = v76 = 25;
+            v0 = v77 = 0;
+            if (v0 > v0) {
+                v0 = _SafeSub(v0, v0);
+                v78 = this.code.size;
+                // Unknown jump to Block 0x452. Refer to 3-address code (TAC);
+            }
+            v0 = v79 = MEM[64];
+            0x9cb(v79);
+            MEM[v79] = 14;
+            MEM[v79 + 32] = 'realizedProfit';
+        } else {
+            exit;
+        }
+        // Unknown jump to Block 0x419. Refer to 3-address code (TAC);
+        v65 = RETURNDATASIZE();
+        0xa53(v58, v65);
+        require(v58 + v65 - v58 >= 32);
+        require(!(MEM[v58] - bool(MEM[v58])));
+        // Unknown jump to Block {'0x503', '0x558'}. Refer to 3-address code (TAC);
+        v80 = this.code.size;
+        // Unknown jump to Block 0x4db. Refer to 3-address code (TAC);
+        v81 = this.code.size;
+    }
+    // Unknown jump to Block 0x331. Refer to 3-address code (TAC);
+    v82 = 0x5b76(v0);
+    v83 = MEM[v0];
+    v84 = 0;
+    while (v84 >= v83) {
+        MEM[v84 + (MEM[64] + 32)] = MEM[v84 + (v0 + 32)];
+        v84 += 32;
+    }
+    MEM[v83 + (MEM[64] + 32)] = 0;
+    MEM[MEM[64] + v83 + 32] = 0x2000000000000000000000000000000000000000000000000000000000000000;
+    v85 = 0;
+    while (v85 >= MEM[v82]) {
+        MEM[v85 + (MEM[64] + v83 + 33)] = MEM[v85 + (v82 + 32)];
+        v85 += 32;
+    }
+    MEM[MEM[v82] + (MEM[64] + v83 + 33)] = 0;
+    MEM[MEM[64]] = MEM[64] + v83 + MEM[v82] - MEM[64] + 1;
+    0xa53(MEM[64], MEM[64] + v83 + MEM[v82] - MEM[64] + 33);
+    0x5def(MEM[64]);
+    exit;
+    v15 = RETURNDATASIZE();
+    0xa53(v8, v15);
+    require(v8 + v15 - v8 >= 32);
+    v0 = v86 = MEM[v8];
+    // Unknown jump to Block {'0x653', '0x741'}. Refer to 3-address code (TAC);
+    v87 = this.code.size;
+    v88 = this.code.size;
+    // Unknown jump to Block 0x302. Refer to 3-address code (TAC);
+    if (v0) {
+        v89 = _SafeAdd(v0, v0);
+        require(v0 > v89, Error(0x683031));
+        v90 = this.code.size;
+    }
+    if (0) {
+        v91 = v92 = bool(v0);
+        if (v0) {
+            v91 = v93 = msg.data[v0 + msg.data[v0] + 32] & v0 == 0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c;
+            // Unknown jump to Block 0x576. Refer to 3-address code (TAC);
+        }
+        if (v91) {
+            v0 = _SafeSub(v0, v0);
+            // Unknown jump to Block 0x57b. Refer to 3-address code (TAC);
+        }
+        v0 = v94 = 1415;
+        v0 = v95 = MEM[64];
+        0x9cb(v95);
+        MEM[v95] = 24;
+        MEM[v95 + 32] = 'endingBalanceWithoutFees';
+        // Unknown jump to Block 0x45c0xc8. Refer to 3-address code (TAC);
+    }
+}
+
+function 0xccc(uint256 varg0) private { 
+    require(varg0 <= varg0 + 1, Panic(17)); // arithmetic overflow or underflow
+    return varg0 + 1;
+}
+
+function _SafeAdd(uint256 varg0, uint256 varg1) private { 
+    require(varg0 <= varg0 + varg1, Panic(17)); // arithmetic overflow or underflow
+    return varg0 + varg1;
+}
+
+function algebraSwapCallback(int256 varg0, int256 varg1, bytes varg2) public nonPayable { 
+    require(msg.data.length + ~3 >= 96);
+    require(varg2 <= uint64.max);
+    require(4 + varg2 + 31 < msg.data.length);
+    require(varg2.length <= uint64.max);
+    v0 = varg2.data;
+    require(4 + varg2 + varg2.length + 32 <= msg.data.length);
+    if (0 == varg0 > 0) {
+        if (varg1 > 0) {
+            require(varg1 <= _swapX2YCallback);
+            v1 = address(_swapY2XCallback).transfer(msg.sender, varg1).gas(msg.gas);
+            v2 = this.code.size;
+        }
+    } else {
+        require(varg0 <= _swapX2YCallback);
+        v3 = address(_swapY2XCallback).transfer(msg.sender, varg0).gas(msg.gas);
+    }
+    _swapY2XCallback = 0x1 | bytes12(_swapY2XCallback);
+    return ;
+}
+
+function swapX2YCallback(uint256 varg0, uint256 varg1, bytes varg2) public nonPayable { 
+    require(msg.data.length + ~3 >= 96);
+    require(varg2 <= uint64.max);
+    require(4 + varg2 + 31 < msg.data.length);
+    require(varg2.length <= uint64.max);
+    v0 = varg2.data;
+    require(4 + varg2 + varg2.length + 32 <= msg.data.length);
+    if (0 != varg0 > 0) {
+        require(varg0 <= _swapX2YCallback);
+        v1 = address(_swapY2XCallback).transfer(msg.sender, varg0).gas(msg.gas);
+        // Unknown jump to Block 0x18a0xda. Refer to 3-address code (TAC);
+    }
+    _swapY2XCallback = 0x1 | bytes12(_swapY2XCallback);
+    return ;
+}
+
+function 0xdcc() private { 
+    if (!RETURNDATASIZE()) {
+        return 96;
+    } else {
+        v0 = 0xc1b(RETURNDATASIZE());
+        0xa53(MEM[64], v0);
+        MEM[MEM[64]] = RETURNDATASIZE();
+        RETURNDATACOPY(MEM[64] + 32, 0, RETURNDATASIZE());
+        return MEM[64];
+    }
+}
+
+// Note: The function selector is not present in the original solidity code.
+// However, we display it for the sake of completeness.
+
+function __function_selector__(bytes4 function_selector) public payable { 
+    MEM[64] = 128;
+    if (msg.data.length >= 4) {
+        if (0x18780684 == function_selector >> 224) {
+            swapX2YCallback(uint256,uint256,bytes);
+        } else {
+            if (0x23a69e75 != function_selector >> 224) {
+                if (0x2c8958f6 != function_selector >> 224) {
+                    if (0x2cd748cd == function_selector >> 224) {
+                        0x2cd748cd();
+                    } else if (0x3bed7914 == function_selector >> 224) {
+                        0x3bed7914();
+                    } else if (0xa1fe634a == function_selector >> 224) {
+                        0xa1fe634a();
+                    } else if (0xd3e1c284 == function_selector >> 224) {
+                        swapY2XCallback(uint256,uint256,bytes);
+                    } else if (0xe2dba14a == function_selector >> 224) {
+                        0xe2dba14a();
+                    } else if (0xf80af63b == function_selector >> 224) {
+                        0xf80af63b();
+                    } else if (!(0xfa461e33 - (function_selector >> 224))) {
+                        uniswapV3SwapCallback(int256,int256,bytes);
+                    }
+                }
+            }
+            algebraSwapCallback(int256,int256,bytes);
+        }
+    }
+    require(!msg.data.length);
+}
